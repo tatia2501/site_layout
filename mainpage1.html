@@ -92,6 +92,91 @@
         .nav-link:hover::after {
             width: 100%;
         }
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 34, 0.15);
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #4D5C7A;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.dropdown-item:hover {
+    background: #F0F2F5;
+    color: #C10000;
+    padding-left: 24px;
+}
+.dropdown-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #4D5C7A;
+    transition: transform 0.2s ease;
+}
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Mobile accordion */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.accordion-icon {
+    transition: transform 0.2s ease;
+}
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.accordion-content.active {
+    max-height: 500px;
+}
+.mobile-dropdown-item {
+    display: block;
+    padding: 8px 0 8px 20px;
+    color: #687599;
+    font-size: 14px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+.mobile-dropdown-item:hover {
+    color: #C10000;
+    border-left-color: #C10000;
+}
         .btn-primary {
             transition: all 0.3s ease;
         }
@@ -139,14 +224,55 @@
                 <span class="text-2xl font-bold text-bg-darker tracking-tight">Роксофт<span class="text-sm align-top">®</span></span>
             </a>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-10 ml-20">
-                <a href="#products" class="nav-link text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px]">Продукты</a>
-                <a href="#services" class="nav-link text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px]">Услуги</a>
-                <a href="#cases" class="nav-link text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px]">Кейсы</a>
-                <a href="#company" class="nav-link text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px]">О компании</a>
-                <a href="#contacts" class="nav-link text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px]">Контакты</a>
-            </nav>
+<!-- Desktop Navigation with Dropdowns -->
+<nav class="hidden lg:flex items-center gap-10 ml-20">
+    
+    <!-- Продукты -->
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+            Продукты
+        </a>
+        <div class="dropdown-menu">
+            <a href="/projects/postomat.html" class="dropdown-item">Постамат</a>
+            <a href="/projects/multimat.html" class="dropdown-item">Мультимат</a>
+            <a href="/projects/wcms.html" class="dropdown-item">WCMS-конструктор</a>
+            <a href="/projects/turportal.html" class="dropdown-item">Туристический портал</a>
+            <a href="/projects/air.html" class="dropdown-item">АИР.ЦИФРА</a>
+            <a href="/projects/feedbacksys.html" class="dropdown-item">Система обратной связи</a>
+        </div>
+    </div>
+
+    <!-- Услуги -->
+    <a href="services.html" class="text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+        Услуги
+    </a>
+
+    <!-- Кейсы -->
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+            Кейсы
+        </a>
+        <div class="dropdown-menu">
+            <a href="/cases/postomatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
+            <a href="/cases/turportal.html" class="dropdown-item">Туристический портал</a>
+        </div>
+    </div>
+
+    <!-- О нас -->
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+            О нас
+        </a>
+        <div class="dropdown-menu">
+            <a href="/about/about.html" class="dropdown-item">О нас</a>
+            <a href="/about/team.html" class="dropdown-item">Команда</a>
+            <a href="/about/contacts.html" class="dropdown-item">Контакты</a>
+            <a href="/about/opinions.html" class="dropdown-item">Отзывы</a>
+            <a href="/about/rights.html" class="dropdown-item">Права</a>
+        </div>
+    </div>
+
+</nav>
 
             <!-- Right Side -->
             <div class="hidden lg:flex items-center gap-6">
@@ -167,22 +293,64 @@
             </button>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-bg-card absolute w-full">
-            <div class="px-6 py-4 space-y-4">
-                <a href="#products" class="block text-text-primary font-medium">Продукты</a>
-                <a href="#services" class="block text-text-primary font-medium">Услуги</a>
-                <a href="#cases" class="block text-text-primary font-medium">Кейсы</a>
-                <a href="#company" class="block text-text-primary font-medium">О компании</a>
-                <a href="#contacts" class="block text-text-primary font-medium">Контакты</a>
-                <div class="pt-4 border-t border-bg-card">
-                    <a href="tel:+78006333020" class="flex items-center gap-2 text-accent font-semibold">
-                        <i data-lucide="phone" class="w-4 h-4"></i>
-                        +7 (800) 633-30-20
-                    </a>
-                </div>
+<!-- Mobile Menu with Accordions -->
+<div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-bg-card absolute w-full max-h-[80vh] overflow-y-auto">
+    <div class="px-6 py-4 space-y-2">
+        
+        <!-- Продукты -->
+        <div class="border-b border-bg-card pb-2">
+            <div class="accordion-header flex justify-between items-center py-3" onclick="toggleAccordion(this)">
+                <span class="text-text-primary font-medium">Продукты</span>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-primary"></i>
+            </div>
+            <div class="accordion-content">
+                <a href="/projects/postomat.html" class="mobile-dropdown-item">Постамат</a>
+                <a href="/projects/multimat.html" class="mobile-dropdown-item">Мультимат</a>
+                <a href="/projects/wcms.html" class="mobile-dropdown-item">WCMS-конструктор</a>
+                <a href="/projects/turportal.html" class="mobile-dropdown-item">Туристический портал</a>
+                <a href="/projects/air.html" class="mobile-dropdown-item">АИР.ЦИФРА</a>
+                <a href="/projects/feedbacksys.html" class="mobile-dropdown-item">Система обратной связи</a>
             </div>
         </div>
+
+        <!-- Услуги -->
+        <a href="services.html" class="block py-3 text-text-primary font-medium border-b border-bg-card">Услуги</a>
+
+        <!-- Кейсы -->
+        <div class="border-b border-bg-card pb-2">
+            <div class="accordion-header flex justify-between items-center py-3" onclick="toggleAccordion(this)">
+                <span class="text-text-primary font-medium">Кейсы</span>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-primary"></i>
+            </div>
+            <div class="accordion-content">
+                <a href="/cases/postomatmfc.html" class="mobile-dropdown-item">Постоматы в МФЦ</a>
+                <a href="/cases/turportal.html" class="mobile-dropdown-item">Туристический портал</a>
+            </div>
+        </div>
+
+        <!-- О нас -->
+        <div class="border-b border-bg-card pb-2">
+            <div class="accordion-header flex justify-between items-center py-3" onclick="toggleAccordion(this)">
+                <span class="text-text-primary font-medium">О нас</span>
+                <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-primary"></i>
+            </div>
+            <div class="accordion-content">
+                <a href="/about/about.html" class="mobile-dropdown-item">О нас</a>
+                <a href="/about/team.html" class="mobile-dropdown-item">Команда</a>
+                <a href="/about/contacts.html" class="mobile-dropdown-item">Контакты</a>
+                <a href="/about/opinions.html" class="mobile-dropdown-item">Отзывы</a>
+                <a href="/about/rights.html" class="mobile-dropdown-item">Права</a>
+            </div>
+        </div>
+
+        <div class="pt-4">
+            <a href="tel:+78006333020" class="flex items-center gap-2 text-accent font-semibold">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+                +7 (800) 633-30-20
+            </a>
+        </div>
+    </div>
+</div>
     </header>
 
     <!-- Hero Section -->
@@ -662,6 +830,37 @@
             card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
             observer.observe(card);
         });
+
+        // Mobile accordion toggle
+function toggleAccordion(header) {
+    header.classList.toggle('active');
+    const content = header.nextElementSibling;
+    content.classList.toggle('active');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+    }
+});
+
+// Prevent dropdown links from closing mobile menu immediately
+document.querySelectorAll('.mobile-dropdown-item').forEach(link => {
+    link.addEventListener('click', function() {
+        setTimeout(() => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }, 150);
+    });
+});
+
+// Re-initialize Lucide icons after mobile menu changes
+const observer = new MutationObserver(() => {
+    lucide.createIcons();
+});
+observer.observe(document.getElementById('mobile-menu'), { childList: true, subtree: true });
     </script>
 </body>
 </html>
