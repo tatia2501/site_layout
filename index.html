@@ -3,44 +3,864 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Навигация</title>
+    <title>Роксофт — Надёжный разработчик IT-решений</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#C10000',
+                        'bg-light': '#F0F2F5',
+                        'bg-card': '#D8DCE6',
+                        'text-muted': '#8A96B3',
+                        'text-secondary': '#687599',
+                        'text-primary': '#4D5C7A',
+                        'bg-dark': '#263355',
+                        'bg-darker': '#000022',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f5f7fa;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
-        nav {
-            text-align: center;
+        .gradient-hero {
+            background: linear-gradient(135deg, #F0F2F5 0%, #ffffff 50%, #D8DCE6 100%);
+            position: relative;
+            overflow: hidden;
         }
-        nav a {
+        .gradient-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(193,0,0,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .gradient-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(38,51,85,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid #C10000;
+            box-shadow: 0 4px 15px rgba(193, 0, 0, 0.15);
+            padding: 32px 24px;
+            border-radius: 16px;
+        }
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(193, 0, 0, 0.25);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 34, 0.15);
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 34, 0.15);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
             display: block;
-            margin: 12px 0;
-            padding: 14px 28px;
-            background-color: #C10000;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 16px;
+            padding: 10px 20px;
+            color: #4D5C7A;
+            font-size: 14px;
             font-weight: 500;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+            transition: all 0.2s ease;
         }
-        nav a:hover {
-            background-color: #990000;
-            transform: translateY(-2px);
+        .dropdown-item:hover {
+            background: #F0F2F5;
+            color: #C10000;
+            padding-left: 24px;
+        }
+        .dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 4px;
+            vertical-align: middle;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #4D5C7A;
+            transition: transform 0.2s ease;
+        }
+        .dropdown:hover .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 34, 0.1);
+        }
+        .news-card {
+            transition: all 0.3s ease;
+        }
+        .news-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 34, 0.15);
+        }
+        .client-logo {
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s ease;
+        }
+        .client-logo:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .header-scrolled {
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+        }
+        .carousel-container {
+            position: relative;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: white;
+            border: 2px solid #C10000;
+            color: #C10000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(193,0,0,0.2);
+        }
+        .carousel-btn:hover {
+            background: #C10000;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .carousel-btn.prev { left: -24px; }
+        .carousel-btn.next { right: -24px; }
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 20px 0;
+        }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+        .product-slide {
+            flex: 0 0 360px;
+            width: 360px;
+        }
+        @media (max-width: 768px) {
+            .product-slide {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .carousel-btn {
+                display: none;
+            }
+        }
+
+        .diagonal-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .diagonal-top {
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+            margin-top: -1px;
         }
     </style>
 </head>
-<body>
-    <nav>
-        <a href="mainpage1.html">Главная страница</a>
-        <a href="mainpage2.html">Главная страница, варианты, 1</a>
-        <a href="mainpage3.html">Главная страница, варианты, 2</a>
-    </nav>
+<body class="smooth-scroll bg-white text-bg-darker">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-white z-50 transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 h-full flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <img src="pics/logo.png" alt="Роксофт" class="h-10 w-auto object-contain">
+                <span class="text-2xl font-bold text-bg-darker tracking-tight">Роксофт<span class="text-sm align-top">®</span></span>
+            </a>
+
+            <!-- Desktop Navigation with Dropdowns -->
+            <nav class="hidden lg:flex items-center gap-10 ml-20">
+                <!-- Продукты -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                        Продукты
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="projects/postamat.html" class="dropdown-item">Постамат</a>
+                        <a href="projects/multimat.html" class="dropdown-item">Мультимат</a>
+                        <a href="projects/wcms.html" class="dropdown-item">WCMS-конструктор</a>
+                        <a href="projects/turportal.html" class="dropdown-item">Туристический портал</a>
+                        <a href="projects/air.html" class="dropdown-item">АИР.ЦИФРА</a>
+                        <a href="projects/feedbacksys.html" class="dropdown-item">Система обратной связи</a>
+                    </div>
+                </div>
+
+                <!-- Кейсы -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                        Кейсы
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="/cases/postamatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
+                        <a href="/cases/turportal.html" class="dropdown-item">Туристический портал</a>
+                    </div>
+                </div>
+
+                <!-- О нас -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                        О нас
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="about/about.html" class="dropdown-item">О компании</a>
+                        <a href="about/team.html" class="dropdown-item">Команда</a>
+                        <a href="about/opinions.html" class="dropdown-item">Отзывы</a>
+                        <a href="about/rights.html" class="dropdown-item">Права</a>
+                    </div>
+                </div>
+
+                <!-- Контакты (отдельно) -->
+                <a href="about/contacts.html" class="text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                    Контакты
+                </a>
+            </nav>
+
+            <!-- Right Side -->
+            <div class="hidden lg:flex items-center gap-6">
+                <div class="flex items-center gap-2 text-sm text-[#8A96B3]">
+                    <button class="font-semibold text-accent text-[14px]">RU</button>
+                    <span>/</span>
+                    <button class="hover:text-accent transition-colors text-[14px]">EN</button>
+                </div>
+                <div class="w-px h-4 bg-[#B8C0D4]"></div>
+                <a href="tel:+78006333020" class="text-bg-darker font-bold hover:text-accent transition-colors flex items-center gap-2 text-[15px]">
+                    +7 (800) 633-30-20
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-text-primary">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-hero pt-[120px] pb-[120px] mt-[80px] min-h-[600px] flex items-center">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 w-full relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="max-w-[600px]">
+                    <div class="inline-flex items-center gap-2 bg-accent/10 border-2 border-accent/30 rounded-full px-4 py-2 mb-6">
+                        <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                        <span class="text-accent text-[14px] font-bold uppercase tracking-[2px]">НАДЕЖНЫЙ РАЗРАБОТЧИК</span>
+                    </div>
+                    <h1 class="text-[48px] lg:text-[56px] font-bold text-bg-darker mb-6 leading-[1.1]">
+                        Разработка <span class="text-accent">IT-систем</span> для госсектора и бизнеса
+                    </h1>
+                    <p class="text-[18px] text-[#4D5C7A] leading-[28px] max-w-[520px] mb-10">
+                        10 лет разрабатываем высоконагруженные системы и программно-аппаратные комплексы. Реализовали более 80 проектов в 24 регионах России
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#products" class="px-8 py-4 bg-accent text-white font-semibold rounded-xl hover:bg-red-700 transition-all shadow-[0px_8px_20px_rgba(193,0,0,0.3)] text-[16px] flex items-center gap-2">
+                            Наши продукты
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#contacts" class="px-8 py-4 bg-transparent border-2 border-bg-dark text-bg-dark font-semibold rounded-xl hover:bg-bg-dark hover:text-white transition-all text-[16px]">
+                            Связаться с нами
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Image with decorative elements -->
+                <div class="hidden lg:flex justify-end relative">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-bg-dark/10 rounded-full blur-3xl"></div>
+                    <div class="relative w-[520px] h-[480px] rounded-[24px] overflow-hidden shadow-[0px_30px_60px_rgba(0,0,0,0.15)] bg-gradient-to-br from-bg-card to-white border-4 border-white">
+                        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-bg-dark/5"></div>
+                        <img src="pics/logo.png" alt="IT Infrastructure" class="w-full h-full object-cover opacity-90">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-[80px] bg-white relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-bg-light/50 to-transparent"></div>
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 relative z-10">
+            <div class="flex justify-center">
+                <div class="flex flex-wrap justify-center gap-16 lg:gap-24">
+                    <div class="stat-card text-center w-[220px]">
+                        <div class="text-[64px] font-bold text-accent leading-none mb-2">10+</div>
+                        <div class="text-[18px] text-bg-dark font-bold mb-2">лет опыта</div>
+                        <div class="text-[14px] text-[#8A96B3] leading-[20px]">разрабатываем высоконагруженные системы</div>
+                    </div>
+                    <div class="stat-card text-center w-[220px]">
+                        <div class="text-[64px] font-bold text-bg-dark leading-none mb-2">80+</div>
+                        <div class="text-[18px] text-bg-dark font-bold mb-2">проектов</div>
+                        <div class="text-[14px] text-[#8A96B3] leading-[20px]">реализовали на базе отечественного ПО</div>
+                    </div>
+                    <div class="stat-card text-center w-[220px]">
+                        <div class="text-[64px] font-bold text-accent leading-none mb-2">24</div>
+                        <div class="text-[18px] text-bg-dark font-bold mb-2">региона России</div>
+                        <div class="text-[14px] text-[#8A96B3] leading-[20px]">доверяют нам создание IT-продуктов</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-[120px] bg-bg-light">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[48px] font-bold text-bg-darker mb-4">Наши продукты</h2>
+                <p class="text-xl text-[#4D5C7A]">Готовые решения для автоматизации процессов</p>
+            </div>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="carousel-track" id="productCarousel">
+                    <!-- Product 1 -->
+                    <div class="product-slide bg-white rounded-3xl p-8 shadow-lg flex flex-col">
+                        <div class="bg-gray-50 rounded-2xl p-6 mb-4 h-[240px] flex items-center justify-center flex-shrink-0">
+                            <img src="pics/postamat.png" alt="Постамат" class="max-h-full w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-between mb-3 flex-shrink-0">
+                            <h3 class="text-xl font-bold text-bg-darker">Постамат</h3>
+                            <span class="bg-accent/10 text-accent text-xs font-bold px-2 py-1 rounded-full">B2B</span>
+                        </div>
+                        <p class="text-[#4D5C7A] text-sm mb-4 flex-grow">Автоматизированная выдача документов 24/7. Интеграция с АИС МФЦ.</p>
+                        <div class="space-y-2 text-xs text-[#687599] mb-4 flex-shrink-0">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> >15 моделей</div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Интеграция со СКУД</div>
+                        </div>
+                        <a href="projects/postamat.html" class="w-full block text-center bg-bg-dark text-white py-3 rounded-xl font-bold hover:bg-accent transition-colors text-sm flex-shrink-0">Подробнее</a>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-slide bg-white rounded-3xl p-8 shadow-lg flex flex-col">
+                        <div class="bg-gray-50 rounded-2xl p-6 mb-4 h-[240px] flex items-center justify-center flex-shrink-0">
+                            <img src="pics/multimat.png" alt="Мультимат" class="max-h-full w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-between mb-3 flex-shrink-0">
+                            <h3 class="text-xl font-bold text-bg-darker">Мультимат</h3>
+                            <span class="bg-accent/10 text-accent text-xs font-bold px-2 py-1 rounded-full">B2C</span>
+                        </div>
+                        <p class="text-[#4D5C7A] text-sm mb-4 flex-grow">Терминал самообслуживания: печать, сканирование, копирование.</p>
+                        <div class="space-y-2 text-xs text-[#687599] mb-4 flex-shrink-0">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> 85+ устройств</div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> >2200 клиентов/день</div>
+                        </div>
+                        <a href="projects/multimat.html" class="w-full block text-center bg-bg-dark text-white py-3 rounded-xl font-bold hover:bg-accent transition-colors text-sm flex-shrink-0">Подробнее</a>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-slide bg-white rounded-3xl p-8 shadow-lg flex flex-col">
+                        <div class="bg-gray-50 rounded-2xl p-6 mb-4 h-[240px] flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="layout-dashboard" class="w-20 h-20 text-[#8A96B3]"></i>
+                        </div>
+                        <div class="flex items-center justify-between mb-3 flex-shrink-0">
+                            <h3 class="text-xl font-bold text-bg-darker">WCMS</h3>
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">SaaS</span>
+                        </div>
+                        <p class="text-[#4D5C7A] text-sm mb-4 flex-grow">Платформа управления сайтами на базе Webasyst. В реестре ПО РФ.</p>
+                        <div class="space-y-2 text-xs text-[#687599] mb-4 flex-shrink-0">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Конструктор сайтов</div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Интеграции</div>
+                        </div>
+                        <a href="projects/wcms.html" class="w-full block text-center bg-bg-dark text-white py-3 rounded-xl font-bold hover:bg-accent transition-colors text-sm flex-shrink-0">Подробнее</a>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-slide bg-white rounded-3xl p-8 shadow-lg flex flex-col">
+                        <div class="bg-gray-50 rounded-2xl p-6 mb-4 h-[240px] flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="briefcase" class="w-20 h-20 text-[#8A96B3]"></i>
+                        </div>
+                        <div class="flex items-center justify-between mb-3 flex-shrink-0">
+                            <h3 class="text-xl font-bold text-bg-darker">АИРЦИФРА</h3>
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">Gov</span>
+                        </div>
+                        <p class="text-[#4D5C7A] text-sm mb-4 flex-grow">Единое цифровое окно для сопровождения инвестиционных проектов.</p>
+                        <div class="space-y-2 text-xs text-[#687599] mb-4 flex-shrink-0">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> CRM модуль</div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Аналитика</div>
+                        </div>
+                        <a href="projects/air.html" class="w-full block text-center bg-bg-dark text-white py-3 rounded-xl font-bold hover:bg-accent transition-colors text-sm flex-shrink-0">Подробнее</a>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn next" onclick="scrollCarousel(1)">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-[120px] bg-bg-dark text-white relative overflow-hidden diagonal-bottom">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px]"></div>
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <div class="text-accent font-bold text-sm mb-4 uppercase tracking-widest">О компании</div>
+                    <h2 class="text-[48px] lg:text-[56px] font-bold mb-8 leading-tight">
+                        Воплощаем<br>технологии<br>в жизнь
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-12 leading-relaxed">
+                        Разрабатываем высоконагруженные интернет-системы и программно-аппаратные комплексы.
+                        Полный цикл: от идеи до внедрения.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white/5 rounded-2xl p-8 backdrop-blur border border-white/10">
+                        <h3 class="text-2xl font-bold mb-6">Специализация</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1"></i>
+                                <span class="text-gray-300">Заказная разработка интернет-порталов, приложений для Windows/Linux, мобильных приложений</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1"></i>
+                                <span class="text-gray-300">IT-консалтинг</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1"></i>
+                                <span class="text-gray-300">Интеграция с существующими системами</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1"></i>
+                                <span class="text-gray-300">Программно-аппаратные решения (ПАК)</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent flex-shrink-0 mt-1"></i>
+                                <span class="text-gray-300">Работа с BigData, нейронными сетями</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Geography Section -->
+    <section id="geography" class="py-[120px] bg-[#F0F2F5] diagonal-top">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+            <h2 class="text-[36px] font-bold text-bg-darker mb-4 tracking-wide text-center">ГЕОГРАФИЯ РАБОТЫ</h2>
+            <p class="text-[#4D5C7A] text-[18px] mb-[60px] text-center max-w-[800px] mx-auto">24 региона России от Калининграда до Запорожской области. Головной офис в Санкт-Петербурге</p>
+            
+            <div class="bg-white rounded-[16px] p-8 relative h-[400px] mb-10 shadow-[0px_4px_12px_rgba(0,0,0,0.06)] overflow-hidden">
+                <img src="pics/map.png" alt="География работы" class="w-full h-full object-contain">
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-[80px] bg-white">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+            <h2 class="text-[36px] font-bold text-bg-darker mb-[60px] tracking-wide text-center">НАМ ДОВЕРЯЮТ</h2>
+            
+            <div class="flex justify-center">
+                <img src="pics/clients.png" alt="Наши клиенты" class="max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-[120px] bg-white">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+            <h2 class="text-[36px] font-bold text-bg-darker mb-[60px] tracking-wide text-center">Отзывы клиентов</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="testimonial-card bg-[#F4F6F8] p-8 rounded-3xl relative">
+                    <i data-lucide="quote" class="w-10 h-10 text-accent/20 absolute top-6 right-6"></i>
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                    </div>
+                    <p class="text-bg-darker font-medium mb-6 leading-relaxed">"Профессиональный подход к разработке, чёткое соблюдение сроков и высокое качество кода. Рекомендуем как надёжного партнёра."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-white">А</div>
+                        <div>
+                            <div class="text-sm font-bold">Александр Петров</div>
+                            <div class="text-xs text-gray-500">IT-директор, МФЦ ЛО</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="testimonial-card bg-bg-darker text-white p-8 rounded-3xl relative transform md:-translate-y-4 shadow-xl">
+                    <i data-lucide="quote" class="w-10 h-10 text-white/10 absolute top-6 right-6"></i>
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                    </div>
+                    <p class="font-medium mb-6 leading-relaxed">"Я сама управляю сайтом, и всё очень удобно и получается сделать самой. Это очень круто, лучше, чем наша старая система управления."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-bold text-white">Е</div>
+                        <div>
+                            <div class="text-sm font-bold">Ельмира</div>
+                            <div class="text-xs text-gray-400">ФПП ЛО</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="testimonial-card bg-[#F4F6F8] p-8 rounded-3xl relative">
+                    <i data-lucide="quote" class="w-10 h-10 text-accent/20 absolute top-6 right-6"></i>
+                    <div class="flex items-center gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-accent text-accent"></i>
+                    </div>
+                    <p class="text-bg-darker font-medium mb-6 leading-relaxed">"Глубокое понимание бизнес-процессов и умение переводить их в эффективные IT-решения. Работаем с Роксофт уже 5 лет."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-white">И</div>
+                        <div>
+                            <div class="text-sm font-bold">Игорь Волков</div>
+                            <div class="text-xs text-gray-500">CEO, ТехноПром</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-[120px] bg-[#F4F6F8]">
+        <div class="max-w-5xl mx-auto px-6 lg:px-12">
+            <h2 class="text-[36px] font-bold text-bg-darker mb-12 text-center">Новости</h2>
+            
+            <div class="space-y-4">
+                <!-- News Item 1 -->
+                <a href="#" class="block bg-white p-6 rounded-2xl hover:shadow-md transition-shadow flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-6 w-full">
+                        <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl font-bold text-bg-darker">11</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-accent font-bold uppercase mb-1">11 Февраля 2026</div>
+                            <h3 class="text-lg font-bold text-bg-darker hover:text-accent transition-colors">Встречайте Netcat 7!!</h3>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                </a>
+
+                <!-- News Item 2 -->
+                <a href="#" class="block bg-white p-6 rounded-2xl hover:shadow-md transition-shadow flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-6 w-full">
+                        <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl font-bold text-bg-darker">15</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-accent font-bold uppercase mb-1">15 Января 2026</div>
+                            <h3 class="text-lg font-bold text-bg-darker hover:text-accent transition-colors">Запуск нового модуля АИРЦИФРА 2.0</h3>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                </a>
+
+                <!-- News Item 3 -->
+                <a href="#" class="block bg-white p-6 rounded-2xl hover:shadow-md transition-shadow flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-6 w-full">
+                        <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl font-bold text-bg-darker">05</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-accent font-bold uppercase mb-1">05 Января 2026</div>
+                            <h3 class="text-lg font-bold text-bg-darker hover:text-accent transition-colors">Команда Роксофт выросла до 100+ специалистов</h3>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - Pure Red + Blue Accents -->
+    <section id="contacts" class="py-[80px] bg-[#C10000] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+        </div>
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#000022]/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#000022]/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 text-center relative z-10">
+            <h2 class="text-[48px] font-bold text-white mb-6 leading-tight">Давайте создадим <span class="text-[#000022]">вместе</span></h2>
+            <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+                Расскажите о проекте — мы предложим решение и подготовим коммерческое предложение
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+                <a href="mailto:info@rocksoft.ru" class="bg-white text-[#C10000] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2 shadow-xl">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    info@rocksoft.ru
+                </a>
+                <a href="tel:+79006333020" class="bg-[#000022] text-white border-2 border-[#000022] px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-[#000022] hover:border-white transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    +7 (900) 633-30-20
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-white/90 text-sm">
+                <div class="flex items-center gap-2 bg-[#000022]/20 px-4 py-2 rounded-full">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                    <span>Ответ за 2 часа</span>
+                </div>
+                <div class="flex items-center gap-2 bg-[#000022]/20 px-4 py-2 rounded-full">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                    <span>Бесплатная консультация</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-bg-darker text-bg-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <!-- Logo & Copyright -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="pics/logo.png" alt="Роксофт" class="h-8 w-auto object-contain">
+                        <span class="text-xl font-bold text-white">Роксофт</span>
+                    </div>
+                    <p class="text-text-muted text-sm">© 2024 Роксофт.<br>Все права защищены.</p>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">ПРОДУКТЫ</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li><a href="projects/postamat.html" class="hover:text-accent transition-colors">Постамат</a></li>
+                        <li><a href="projects/multimat.html" class="hover:text-accent transition-colors">Мультимат</a></li>
+                        <li><a href="projects/wcms.html" class="hover:text-accent transition-colors">WCMS-конструктор</a></li>
+                        <li><a href="projects/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+                        <li><a href="projects/air.html" class="hover:text-accent transition-colors">АИР.ЦИФРА</a></li>
+                    </ul>
+                </div>
+
+                <!-- Cases -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">КЕЙСЫ</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li><a href="/cases/postamatmfc.html" class="hover:text-accent transition-colors">Постоматы в МФЦ</a></li>
+                        <li><a href="/cases/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+                    </ul>
+                </div>
+
+                <!-- About -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">О НАС</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li><a href="about/about.html" class="hover:text-accent transition-colors">О компании</a></li>
+                        <li><a href="about/team.html" class="hover:text-accent transition-colors">Команда</a></li>
+                        <li><a href="about/opinions.html" class="hover:text-accent transition-colors">Отзывы</a></li>
+                        <li><a href="about/rights.html" class="hover:text-accent transition-colors">Права</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacts -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">КОНТАКТЫ</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li>Санкт-Петербург, ул. Профессора Попова, 5</li>
+                        <li><a href="tel:+78006333020" class="hover:text-accent transition-colors">+7 (800) 633-30-20</a></li>
+                        <li><a href="mailto:info@rocksoft.ru" class="hover:text-accent transition-colors">info@rocksoft.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-text-muted/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted">
+                <div class="flex items-center gap-6">
+                    <span>© 2026 ООО «Роксофт»</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-accent transition-colors">Политика конфиденциальности</a>
+                    <a href="#" class="hover:text-accent transition-colors">Обработка ПД</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Carousel functionality
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('productCarousel');
+            const scrollAmount = 400;
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.id = 'mobile-menu';
+        mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 pt-[100px] px-6 overflow-y-auto';
+        mobileMenu.innerHTML = `
+            <div class="flex flex-col gap-4 text-lg">
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        Продукты
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="projects/postamat.html" class="py-2 text-text-primary hover:text-accent">Постамат</a>
+                        <a href="projects/multimat.html" class="py-2 text-text-primary hover:text-accent">Мультимат</a>
+                        <a href="projects/wcms.html" class="py-2 text-text-primary hover:text-accent">WCMS-конструктор</a>
+                        <a href="projects/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+                        <a href="projects/air.html" class="py-2 text-text-primary hover:text-accent">АИР.ЦИФРА</a>
+                        <a href="projects/feedbacksys.html" class="py-2 text-text-primary hover:text-accent">Система обратной связи</a>
+                    </div>
+                </div>
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        Кейсы
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="/cases/postamatmfc.html" class="py-2 text-text-primary hover:text-accent">Постоматы в МФЦ</a>
+                        <a href="/cases/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+                    </div>
+                </div>
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        О нас
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="about/about.html" class="py-2 text-text-primary hover:text-accent">О компании</a>
+                        <a href="about/team.html" class="py-2 text-text-primary hover:text-accent">Команда</a>
+                        <a href="about/opinions.html" class="py-2 text-text-primary hover:text-accent">Отзывы</a>
+                        <a href="about/rights.html" class="py-2 text-text-primary hover:text-accent">Права</a>
+                    </div>
+                </div>
+                <a href="about/contacts.html" class="py-3 text-bg-darker font-semibold border-b border-bg-card">Контакты</a>
+                <a href="tel:+78006333020" class="py-3 text-accent font-bold flex items-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    +7 (800) 633-30-20
+                </a>
+            </div>
+        `;
+        document.body.appendChild(mobileMenu);
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            lucide.createIcons();
+        });
+
+        function toggleMobileDropdown(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('hidden');
+            content.classList.toggle('flex');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
