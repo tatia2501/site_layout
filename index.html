@@ -33,35 +33,6 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-        .hero-bg {
-            background: linear-gradient(135deg, #F0F2F5 0%, #ffffff 50%, #D8DCE6 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('pics/main-banner.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            z-index: 0;
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(240,242,245,0.95) 0%, rgba(255,255,255,0.9) 50%, rgba(216,220,230,0.95) 100%);
-            z-index: 1;
-        }
         .stat-card {
             transition: all 0.3s ease;
             background: white;
@@ -296,7 +267,14 @@
     </header>
 
     <!-- Hero Section with Background Image -->
-    <section class="hero-bg pt-[120px] pb-[120px] mt-[80px] min-h-[600px] flex items-center relative">
+    <section class="relative pt-[120px] pb-[120px] mt-[80px] min-h-[600px] flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="pics/main-banner.png" alt="" class="w-full h-full object-cover">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-[#F0F2F5]/95 via-white/90 to-[#D8DCE6]/95"></div>
+        </div>
+        
         <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 w-full relative z-10">
             <div class="max-w-[700px]">
                 <div class="inline-flex items-center gap-2 bg-accent/10 border-2 border-accent/30 rounded-full px-4 py-2 mb-6">
