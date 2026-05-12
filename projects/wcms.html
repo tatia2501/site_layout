@@ -7,20 +7,23 @@
     <meta name="description" content="Конструктор многостраничных сайтов. Low-code система, блочная структура, мультидоменность. >400 реализованных сайтов.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         accent: '#C10000',
-                        dark: '#0B1120',
-                        surface: '#F4F6F9',
-                        border: '#E2E8F0',
+                        'bg-light': '#F0F2F5',
+                        'bg-card': '#D8DCE6',
+                        'text-muted': '#8A96B3',
+                        'text-secondary': '#687599',
+                        'text-primary': '#4D5C7A',
+                        'bg-dark': '#263355',
+                        'bg-darker': '#000022',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     }
                 }
             }
@@ -28,121 +31,202 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .mono-label { font-family: 'JetBrains Mono', monospace; }
-        .sharp { border-radius: 0px; }
-        .sharp-sm { border-radius: 4px; }
-        .sharp-lg { border-radius: 8px; }
-        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .gradient-hero {
+            background: linear-gradient(135deg, #F0F2F5 0%, #FFFFFF 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #C10000 0%, #990000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 34, 0.15);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
+            display: block;
+            padding: 10px 20px;
+            color: #4D5C7A;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .dropdown-item:hover {
+            background: #F0F2F5;
+            color: #C10000;
+            padding-left: 24px;
+        }
+        .dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 4px;
+            vertical-align: middle;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #4D5C7A;
+            transition: transform 0.2s ease;
+        }
+        .dropdown:hover .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        .header-scrolled {
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
-<body class="bg-white text-slate-900 antialiased selection:bg-accent selection:text-white">
+<body class="bg-white text-bg-darker">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-border">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="../mainpage1.html" class="flex items-center gap-3 group">
-                <img src="../pics/logo.png" alt="Роксофт" class="h-10 w-auto">
-                <span class="text-2xl font-bold tracking-tight group-hover:text-accent transition-colors">Роксофт<span class="text-accent text-sm align-top">®</span></span>
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-white z-50 transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 h-full flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center gap-3">
+                <img src="../pics/logo.png" alt="Роксофт" class="h-10 w-auto object-contain">
+                <span class="text-2xl font-bold text-bg-darker tracking-tight">Роксофт<span class="text-sm align-top">®</span></span>
             </a>
-            
-            <div class="hidden lg:flex items-center gap-10 ml-20">
-                <div class="dropdown relative group/nav">
-                    <button class="flex items-center gap-1.5 text-slate-600 font-medium hover:text-accent transition-colors text-[15px] py-6">
-                        Продукты <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover/nav:rotate-180"></i>
-                    </button>
-                    <div class="absolute top-full left-0 min-w-[280px] bg-white border border-border shadow-xl p-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 translate-y-2 group-hover/nav:translate-y-0 sharp-lg">
-                        <a href="postamat.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Постамат</a>
-                        <a href="multimat.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Мультимат</a>
-                        <a href="wcms.html" class="block px-4 py-2.5 text-sm font-medium bg-surface text-accent sharp-sm">WCMS-конструктор</a>
-                        <a href="turportal.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Туристический портал</a>
-                        <a href="air.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">АИР.ЦИФРА</a>
-                        <a href="feedbacksys.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Система обратной связи</a>
+
+            <!-- Desktop Navigation with Dropdowns -->
+            <nav class="hidden lg:flex items-center gap-10 ml-20">
+                <!-- Продукты -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                        Продукты
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="postamat.html" class="dropdown-item">Постамат</a>
+                        <a href="multimat.html" class="dropdown-item">Мультимат</a>
+                        <a href="wcms.html" class="dropdown-item">WCMS-конструктор</a>
+                        <a href="turportal.html" class="dropdown-item">Туристический портал</a>
+                        <a href="air.html" class="dropdown-item">АИР.ЦИФРА</a>
+                        <a href="feedbacksys.html" class="dropdown-item">Система обратной связи</a>
                     </div>
                 </div>
 
-                <a href="../services.html" class="text-slate-600 font-medium hover:text-accent transition-colors text-[15px]">Услуги</a>
-
-                <div class="dropdown relative group/nav">
-                    <button class="flex items-center gap-1.5 text-slate-600 font-medium hover:text-accent transition-colors text-[15px] py-6">
-                        Кейсы <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover/nav:rotate-180"></i>
-                    </button>
-                    <div class="absolute top-full left-0 min-w-[280px] bg-white border border-border shadow-xl p-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 translate-y-2 group-hover/nav:translate-y-0 sharp-lg">
-                        <a href="../cases/postamatmfc.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Постоматы в МФЦ</a>
-                        <a href="../cases/turportal.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Туристический портал</a>
+                <!-- Кейсы -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                        Кейсы
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../cases/postamatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
+                        <a href="../cases/turportal.html" class="dropdown-item">Туристический портал</a>
                     </div>
                 </div>
 
-                <div class="dropdown relative group/nav">
-                    <button class="flex items-center gap-1.5 text-slate-600 font-medium hover:text-accent transition-colors text-[15px] py-6">
-                        О нас <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover/nav:rotate-180"></i>
-                    </button>
-                    <div class="absolute top-full left-0 min-w-[280px] bg-white border border-border shadow-xl p-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 translate-y-2 group-hover/nav:translate-y-0 sharp-lg">
-                        <a href="../about/about.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">О нас</a>
-                        <a href="../about/team.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Команда</a>
-                        <a href="../about/contacts.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Контакты</a>
-                        <a href="../about/opinions.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Отзывы</a>
-                        <a href="../about/rights.html" class="block px-4 py-2.5 text-sm text-slate-700 hover:bg-surface hover:text-accent sharp-sm">Права</a>
+                <!-- О нас -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                        О нас
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../about/about.html" class="dropdown-item">О компании</a>
+                        <a href="../about/team.html" class="dropdown-item">Команда</a>
+                        <a href="../about/opinions.html" class="dropdown-item">Отзывы</a>
+                        <a href="../about/rights.html" class="dropdown-item">Права</a>
                     </div>
                 </div>
-            </div>
 
+                <!-- Контакты (отдельно) -->
+                <a href="../about/contacts.html" class="text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+                    Контакты
+                </a>
+            </nav>
+
+            <!-- Right Side -->
             <div class="hidden lg:flex items-center gap-6">
-                <a href="tel:+78006333020" class="text-slate-900 font-bold hover:text-accent transition-colors flex items-center gap-2 text-[15px]">
-                    <i data-lucide="phone" class="w-4 h-4"></i> +7 (800) 633-30-20
+                <div class="w-px h-4 bg-[#B8C0D4]"></div>
+                <a href="tel:+78006333020" class="text-bg-darker font-bold hover:text-accent transition-colors flex items-center gap-2 text-[15px]">
+                    +7 (800) 633-30-20
                 </a>
             </div>
 
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-text-primary">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero: Editorial Dark -->
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-dark text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-end">
-                <div class="lg:col-span-7 reveal">
-                    <div class="mono-label text-accent text-sm mb-6 tracking-widest uppercase">// Low-code платформа v2.0</div>
-                    <h1 class="text-5xl lg:text-7xl font-black leading-[1.05] mb-8">
-                        Управляйте сайтом <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">без программистов</span>
+    <!-- Hero Section - Light background like Postamat -->
+    <section class="gradient-hero pt-32 pb-20 lg:pt-40 lg:pb-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 mb-6">
+                        <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                        <span class="text-accent font-semibold text-sm">Low-code платформа v2.0</span>
+                    </div>
+                    
+                    <h1 class="text-4xl lg:text-6xl font-black leading-tight mb-6">
+                        WCMS — <br>
+                        <span class="text-gradient">управление сайтом</span> без программистов
                     </h1>
-                    <p class="text-xl text-slate-400 mb-10 max-w-2xl leading-relaxed">
-                        WCMS — система для быстрого развёртывания сайтов и гибкого управления контентом. Блочная структура, мультидоменность, техническое SEO из коробки.
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
+                        Система для быстрого развёртывания сайтов и гибкого управления контентом. Блочная структура, мультидоменность, техническое SEO из коробки.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#cooperation" class="bg-accent text-white px-8 py-4 font-bold hover:bg-red-700 transition-all sharp-sm inline-flex items-center gap-3">
-                            Начать сотрудничество <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    
+                    <div class="flex flex-wrap gap-4 mb-12">
+                        <a href="#cooperation" class="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition-all shadow-lg shadow-accent/20 inline-flex items-center gap-2">
+                            Начать сотрудничество
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </a>
-                        <a href="#features" class="bg-white/10 border border-white/20 text-white px-8 py-4 font-bold hover:bg-white/20 transition-all sharp-sm">
+                        <a href="#features" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold hover:border-accent hover:text-accent transition-all">
                             Возможности
                         </a>
                     </div>
-                </div>
-                <div class="lg:col-span-5 reveal">
-                    <div class="bg-slate-800/50 border border-white/10 p-1 sharp-lg backdrop-blur-sm">
-                        <div class="bg-slate-900 rounded-t-lg p-3 flex items-center gap-2 border-b border-white/5">
-                            <div class="flex gap-1.5">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <div class="flex-1 text-center mono-label text-xs text-slate-500">admin.wcms.rocksoft.ru</div>
+
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+                        <div>
+                            <div class="text-3xl font-bold text-bg-darker mb-1">>400</div>
+                            <div class="text-sm text-gray-500">сайтов</div>
                         </div>
-                        <div class="p-6 space-y-4">
-                            <div class="h-14 bg-slate-800 sharp-sm flex items-center justify-center border border-dashed border-slate-700">
-                                <span class="mono-label text-xs text-accent">+ Добавить блок</span>
-                            </div>
-                            <div class="grid grid-cols-3 gap-3">
-                                <div class="h-20 bg-slate-800 sharp-sm"></div>
-                                <div class="h-20 bg-slate-800 sharp-sm"></div>
-                                <div class="h-20 bg-slate-800 sharp-sm"></div>
-                            </div>
-                            <div class="h-10 bg-slate-800 sharp-sm w-2/3"></div>
+                        <div>
+                            <div class="text-3xl font-bold text-bg-darker mb-1">47 мин</div>
+                            <div class="text-sm text-gray-500">обучение</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-bg-darker mb-1">92%</div>
+                            <div class="text-sm text-gray-500">PageSpeed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative reveal">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl">
+                        <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden relative bg-gray-50">
+                            <img src="../pics/wcms.png" alt="WCMS" class="w-full h-full object-contain p-8">
                         </div>
                     </div>
                 </div>
@@ -150,226 +234,259 @@
         </div>
     </section>
 
-    <!-- Comparison: Approaches -->
-    <section class="py-24 bg-white border-b border-border">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-            <div class="mb-16 reveal">
-                <h2 class="text-4xl lg:text-5xl font-black mb-4">Три подхода к созданию сайтов</h2>
-                <p class="text-xl text-slate-500 max-w-3xl">Сравните методики. Гибридный подход WCMS объединяет лучшие стороны классики и полного редактора.</p>
+    <!-- Three Approaches - Separate Cards -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl lg:text-5xl font-black mb-4">Три подхода к <span class="text-gradient">созданию сайтов</span></h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Сравните методики. Гибридный подход WCMS объединяет лучшие стороны классики и полного редактора.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-px bg-border border border-border sharp-lg overflow-hidden reveal">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Classic -->
-                <div class="bg-white p-8">
-                    <div class="mono-label text-xs text-slate-400 mb-4">МЕТОД 01</div>
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="text-xs text-gray-400 mb-4 font-mono">МЕТОД 01</div>
                     <h3 class="text-2xl font-bold mb-4">Классический</h3>
-                    <p class="text-slate-600 text-sm mb-6 min-h-[48px]">Готовая тема дизайна. Контент добавляется как в текстовом редакторе.</p>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i> Ограниченная гибкость структуры</li>
-                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i> Сложно менять дизайн блоков</li>
+                    <p class="text-gray-600 text-sm mb-6">Готовая тема дизайна. Контент добавляется как в текстовом редакторе.</p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Ограниченная гибкость структуры</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Сложно менять дизайн блоков</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Full Editor -->
-                <div class="bg-white p-8">
-                    <div class="mono-label text-xs text-slate-400 mb-4">МЕТОД 02</div>
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="text-xs text-gray-400 mb-4 font-mono">МЕТОД 02</div>
                     <h3 class="text-2xl font-bold mb-4">Полный редактор</h3>
-                    <p class="text-slate-600 text-sm mb-6 min-h-[48px]">Максимальная свобода размещения элементов. Требует навыков дизайна.</p>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i> Высокий порог входа для сотрудников</li>
-                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i> Риск нарушения фирменного стиля</li>
+                    <p class="text-gray-600 text-sm mb-6">Максимальная свобода размещения элементов. Требует навыков дизайна.</p>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Высокий порог входа для сотрудников</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Риск нарушения фирменного стиля</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- WCMS Hybrid -->
-                <div class="bg-slate-50 p-8 relative">
-                    <div class="absolute top-4 right-4 bg-accent text-white text-[10px] font-bold px-2 py-0.5 sharp-sm uppercase tracking-wider">Рекомендуем</div>
-                    <div class="mono-label text-xs text-accent mb-4">МЕТОД 03 — WCMS</div>
+                <div class="bg-white border-2 border-accent rounded-3xl p-8 reveal relative">
+                    <div class="absolute -top-4 right-6 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Рекомендуем
+                    </div>
+                    <div class="text-xs text-accent mb-4 font-mono">МЕТОД 03 — WCMS</div>
                     <h3 class="text-2xl font-bold mb-4">Гибридный</h3>
-                    <p class="text-slate-600 text-sm mb-6 min-h-[48px]">Библиотека готовых блоков в вашем стиле. Редактирование без дизайна, но с полной свободой.</p>
-                    <ul class="space-y-3 text-sm text-slate-700 font-medium">
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i> Гибкость управления контентом</li>
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i> Не требует навыков дизайна</li>
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i> Независимость от разработчиков</li>
+                    <p class="text-gray-600 text-sm mb-6">Библиотека готовых блоков в вашем стиле. Редактирование без дизайна, но с полной свободой.</p>
+                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
+                            <span>Гибкость управления контентом</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
+                            <span>Не требует навыков дизайна</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
+                            <span>Независимость от разработчиков</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cooperation Stages: Vertical List -->
-    <section id="cooperation" class="py-24 bg-surface">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-            <div class="mb-16 reveal">
-                <h2 class="text-4xl lg:text-5xl font-black mb-4">Этапы сотрудничества</h2>
-                <p class="text-xl text-slate-500">Прозрачный процесс от заявки до запуска вашего сайта</p>
-            </div>
-
-            <div class="relative reveal">
-                <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-border"></div>
-                <div class="space-y-12">
-                    <!-- Step 1 -->
-                    <div class="relative pl-12 md:pl-20">
-                        <div class="absolute left-0 md:left-4 top-0 w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-accent sharp-full flex items-center justify-center font-bold text-accent z-10">1</div>
-                        <div class="bg-white border border-border p-6 md:p-8 sharp-lg hover:border-accent/30 transition-colors">
-                            <h4 class="text-2xl font-bold mb-2">Консультация</h4>
-                            <p class="text-slate-600">Проводим индивидуальный анализ задач. Определяем структуру, тип сайта и необходимый функционал.</p>
-                        </div>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="relative pl-12 md:pl-20">
-                        <div class="absolute left-0 md:left-4 top-0 w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-accent sharp-full flex items-center justify-center font-bold text-accent z-10">2</div>
-                        <div class="bg-white border border-border p-6 md:p-8 sharp-lg hover:border-accent/30 transition-colors">
-                            <h4 class="text-2xl font-bold mb-2">Сбор материалов</h4>
-                            <p class="text-slate-600">Направляем чек-лист для предоставления информации: данные, тексты, фотографии, бренд-бук.</p>
-                        </div>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="relative pl-12 md:pl-20">
-                        <div class="absolute left-0 md:left-4 top-0 w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-accent sharp-full flex items-center justify-center font-bold text-accent z-10">3</div>
-                        <div class="bg-white border border-border p-6 md:p-8 sharp-lg hover:border-accent/30 transition-colors">
-                            <h4 class="text-2xl font-bold mb-2">Разработка</h4>
-                            <p class="text-slate-600">Настраиваем дизайн, формируем структуру из контентных блоков, наполняем сайт и согласовываем правки.</p>
-                        </div>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="relative pl-12 md:pl-20">
-                        <div class="absolute left-0 md:left-4 top-0 w-8 h-8 md:w-10 md:h-10 bg-accent text-white sharp-full flex items-center justify-center font-bold z-10">4</div>
-                        <div class="bg-dark text-white p-6 md:p-8 sharp-lg">
-                            <h4 class="text-2xl font-bold mb-2">Запуск и обучение</h4>
-                            <p class="text-slate-300">Размещаем сайт в сети. Проводим обучение сотрудников (в среднем 40 мин). Оказываем техподдержку.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features: Bento Grid Sharp -->
-    <section id="features" class="py-24 bg-white">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <!-- Cooperation Stages - Like Multimat "How we work" -->
+    <section id="cooperation" class="py-20 bg-bg-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl lg:text-5xl font-black mb-4">Всё необходимое <span class="text-accent">в системе</span></h2>
+                <h2 class="text-3xl lg:text-5xl font-black mb-4">Этапы <span class="text-gradient">сотрудничества</span></h2>
+                <p class="text-lg text-gray-600">Прозрачный процесс от выбора до запуска</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="lg:col-span-2 bg-surface p-8 sharp-lg border border-border hover:border-accent/30 transition-colors reveal">
-                    <div class="w-12 h-12 bg-accent/10 sharp-sm flex items-center justify-center mb-6">
-                        <i data-lucide="blocks" class="w-6 h-6 text-accent"></i>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20 relative reveal">
+                <!-- Step 1 -->
+                <div class="relative md:border-r border-gray-200 md:pr-8 pb-8 md:pb-0">
+                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">01</div>
+                    <div class="relative z-10 pt-4">
+                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">КОНСУЛЬТАЦИЯ</div>
+                        <h4 class="text-xl font-bold text-bg-darker mb-3">Консультация</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Проводим индивидуальный анализ задач. Определяем структуру, тип сайта и необходимый функционал.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Low-code блоки</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Каждый блок имеет свой интерфейс: диаграммы, текст, картинки, формы. Создавайте страницы как конструктор без программирования.</p>
                 </div>
 
-                <div class="bg-surface p-8 sharp-lg border border-border hover:border-accent/30 transition-colors reveal">
-                    <div class="w-12 h-12 bg-accent/10 sharp-sm flex items-center justify-center mb-6">
-                        <i data-lucide="search" class="w-6 h-6 text-accent"></i>
+                <!-- Step 2 -->
+                <div class="relative md:border-r border-gray-200 md:px-4 pb-8 md:pb-0">
+                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">02</div>
+                    <div class="relative z-10 pt-4">
+                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">СБОР МАТЕРИАЛОВ</div>
+                        <h4 class="text-xl font-bold text-bg-darker mb-3">Сбор материалов</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Направляем чек-лист для предоставления информации: данные, тексты, фотографии, бренд-бук.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Техническое SEO</h3>
-                    <p class="text-slate-600 text-sm">Автоматическая конвертация в WEBP, асинхронная загрузка, Sitemap, 80+ баллов PageSpeed.</p>
                 </div>
 
-                <div class="bg-surface p-8 sharp-lg border border-border hover:border-accent/30 transition-colors reveal">
-                    <div class="w-12 h-12 bg-accent/10 sharp-sm flex items-center justify-center mb-6">
-                        <i data-lucide="smartphone" class="w-6 h-6 text-accent"></i>
+                <!-- Step 3 -->
+                <div class="relative md:border-r border-gray-200 md:px-4 pb-8 md:pb-0">
+                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">03</div>
+                    <div class="relative z-10 pt-4">
+                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">РАЗРАБОТКА</div>
+                        <h4 class="text-xl font-bold text-bg-darker mb-3">Разработка</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Настраиваем дизайн, формируем структуру из контентных блоков, наполняем сайт и согласовываем правки.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Адаптивность</h3>
-                    <p class="text-slate-600 text-sm">Полная адаптированность для мобильных устройств и планшетов. Доступ с любых устройств.</p>
                 </div>
 
-                <div class="bg-surface p-8 sharp-lg border border-border hover:border-accent/30 transition-colors reveal">
-                    <div class="w-12 h-12 bg-accent/10 sharp-sm flex items-center justify-center mb-6">
-                        <i data-lucide="globe" class="w-6 h-6 text-accent"></i>
+                <!-- Step 4 -->
+                <div class="relative md:pl-8">
+                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">04</div>
+                    <div class="relative z-10 pt-4">
+                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">ЗАПУСК</div>
+                        <h4 class="text-xl font-bold text-bg-darker mb-3">Запуск и обучение</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Размещаем сайт в сети. Проводим обучение сотрудников (в среднем 40 мин). Оказываем техподдержку.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Мультидоменность</h3>
-                    <p class="text-slate-600 text-sm">Неограниченное количество сайтов в одной админке с разграничением прав доступа.</p>
-                </div>
-
-                <div class="bg-surface p-8 sharp-lg border border-border hover:border-accent/30 transition-colors reveal">
-                    <div class="w-12 h-12 bg-accent/10 sharp-sm flex items-center justify-center mb-6">
-                        <i data-lucide="file-check" class="w-6 h-6 text-accent"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Обработка заявок</h3>
-                    <p class="text-slate-600 text-sm">Встроенный конструктор форм и детальная настройка маршрутизации заявок.</p>
-                </div>
-
-                <div class="bg-dark text-white p-8 sharp-lg reveal">
-                    <div class="w-12 h-12 bg-white/10 sharp-sm flex items-center justify-center mb-6">
-                        <i data-lucide="layout-template" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Сменные темы</h3>
-                    <p class="text-slate-300 text-sm">Позволяющие создать сайт по вашему вкусу и адаптировать под государственные структуры.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Advantages: Split Layout -->
-    <section class="py-24 bg-surface border-y border-border">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <!-- Features: Bento Grid with Images - NEW LAYOUT -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl lg:text-5xl font-black mb-4">Всё необходимое <span class="text-gradient">в системе</span></h2>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Row 1: Low-code blocks (small) + Technical SEO (big with image) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="blocks" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Low-code блоки</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Каждый блок имеет свой интерфейс: диаграммы, текст, картинки, формы. Создавайте страницы как конструктор без программирования.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="search" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Техническое SEO</h3>
+                    <p class="text-gray-600 text-sm mb-4">Автоматическая конвертация в WEBP, асинхронная загрузка, Sitemap, 80+ баллов PageSpeed.</p>
+                    <img src="../pics/wcms-ex-1.png" alt="SEO" class="w-full h-32 object-contain rounded-xl mt-4">
+                </div>
+
+                <!-- Row 2: Multidomain (big with image) + Responsive (small) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="globe" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Мультидоменность</h3>
+                    <p class="text-gray-600 text-sm mb-4">Неограниченное количество сайтов в одной админке с разграничением прав доступа.</p>
+                    <img src="../pics/wcms-ex-2.png" alt="Multidomain" class="w-full h-32 object-contain rounded-xl mt-4">
+                </div>
+
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="smartphone" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Адаптивность</h3>
+                    <p class="text-gray-600 text-sm">Полная адаптированность для мобильных устройств и планшетов. Доступ с любых устройств.</p>
+                </div>
+
+                <!-- Row 3: Forms (small) + Themes (big with image) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="file-check" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Обработка заявок</h3>
+                    <p class="text-gray-600 text-sm">Встроенный конструктор форм и детальная настройка маршрутизации заявок.</p>
+                </div>
+
+                <div class="bg-bg-dark text-white rounded-3xl p-8 reveal">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="layout-template" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Сменные темы</h3>
+                    <p class="text-gray-300 text-sm mb-4">Позволяющие создать сайт по вашему вкусу и адаптировать под государственные структуры.</p>
+                    <img src="../pics/wcms-ex-3.png" alt="Themes" class="w-full h-32 object-contain rounded-xl mt-4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages -->
+    <section class="py-20 bg-bg-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <h2 class="text-4xl lg:text-5xl font-black mb-10">Почему <span class="text-accent">WCMS</span></h2>
+                    <h2 class="text-3xl lg:text-5xl font-black mb-10">Почему <span class="text-gradient">WCMS</span></h2>
                     <div class="space-y-8">
                         <div class="flex gap-5">
-                            <div class="w-10 h-10 bg-accent sharp-sm flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="sliders" class="w-5 h-5 text-white"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold mb-1">Гибкость управления</h4>
-                                <p class="text-slate-600 text-sm">Самостоятельное редактирование страниц и создание новых без знания языков программирования.</p>
+                                <p class="text-gray-600 text-sm">Самостоятельное редактирование страниц и создание новых без знания языков программирования.</p>
                             </div>
                         </div>
                         <div class="flex gap-5">
-                            <div class="w-10 h-10 bg-accent sharp-sm flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="mouse-pointer-click" class="w-5 h-5 text-white"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold mb-1">Понятный интерфейс</h4>
-                                <p class="text-slate-600 text-sm">Интуитивная панель управления, позволяющая легко работать с содержимым без привлечения специалистов.</p>
+                                <p class="text-gray-600 text-sm">Интуитивная панель управления, позволяющая легко работать с содержимым без привлечения специалистов.</p>
                             </div>
                         </div>
                         <div class="flex gap-5">
-                            <div class="w-10 h-10 bg-accent sharp-sm flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="piggy-bank" class="w-5 h-5 text-white"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold mb-1">Экономия на обслуживании</h4>
-                                <p class="text-slate-600 text-sm">Снижение расходов на техническую поддержку и оптимизация затрат на обновление контента.</p>
+                                <p class="text-gray-600 text-sm">Снижение расходов на техническую поддержку и оптимизация затрат на обновление контента.</p>
                             </div>
                         </div>
                         <div class="flex gap-5">
-                            <div class="w-10 h-10 bg-accent sharp-sm flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="shield-check" class="w-5 h-5 text-white"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold mb-1">Высокая надёжность</h4>
-                                <p class="text-slate-600 text-sm">За всё время эксплуатации не было ни одного случая сбоя или падения платформы.</p>
+                                <p class="text-gray-600 text-sm">За всё время эксплуатации не было ни одного случая сбоя или падения платформы.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="relative reveal">
-                    <div class="bg-white p-8 sharp-lg border border-border shadow-sm">
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-border">
-                            <span class="mono-label text-xs text-slate-400 uppercase tracking-widest">Платформа WCMS</span>
-                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-0.5 sharp-sm">Стабильно</span>
+                    <div class="bg-white rounded-3xl p-8 shadow-lg">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+                            <span class="text-xs text-gray-400 uppercase tracking-widest font-mono">Платформа WCMS</span>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">Стабильно</span>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="bg-surface p-4 sharp-sm">
-                                <div class="text-3xl font-black text-slate-900">>400</div>
-                                <div class="text-xs text-slate-500 mt-1">сайтов для МСБ</div>
+                            <div class="bg-gray-50 rounded-xl p-4">
+                                <div class="text-3xl font-black text-bg-darker">>400</div>
+                                <div class="text-xs text-gray-500 mt-1">сайтов для МСБ</div>
                             </div>
-                            <div class="bg-surface p-4 sharp-sm">
-                                <div class="text-3xl font-black text-slate-900">47 мин</div>
-                                <div class="text-xs text-slate-500 mt-1">время обучения</div>
+                            <div class="bg-gray-50 rounded-xl p-4">
+                                <div class="text-3xl font-black text-bg-darker">47 мин</div>
+                                <div class="text-xs text-gray-500 mt-1">время обучения</div>
                             </div>
                         </div>
                         <div class="space-y-3">
-                            <div class="h-2 bg-surface sharp-sm overflow-hidden">
-                                <div class="h-full bg-accent w-[92%] sharp-sm"></div>
+                            <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-accent w-[92%] rounded-full"></div>
                             </div>
-                            <div class="flex justify-between text-xs text-slate-500">
+                            <div class="flex justify-between text-xs text-gray-500">
                                 <span>Простота использования</span>
                                 <span class="font-bold">92%</span>
                             </div>
@@ -380,121 +497,150 @@
         </div>
     </section>
 
-    <!-- Regions: Minimal Grid -->
-    <section class="py-24 bg-white">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <!-- Geography -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="mb-12 reveal">
-                <h2 class="text-4xl lg:text-5xl font-black mb-4">Регионы присутствия</h2>
-                <p class="text-xl text-slate-500">Система внедрена в государственных структурах и коммерческих организациях по всей России</p>
+                <h2 class="text-3xl lg:text-5xl font-black mb-4">Регионы <span class="text-gradient">присутствия</span></h2>
+                <p class="text-lg text-gray-600">Система внедрена в государственных структурах и коммерческих организациях по всей России</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 reveal">
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Санкт-Петербург</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Ленинградская область</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Республика Карелия</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Челябинская область</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Республика Татарстан</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Великий Новгород</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Калининград</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Приморский край</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Рязанская область</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Псковская область</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">Республика Коми</span>
-                </div>
-                <div class="bg-surface p-4 sharp-sm border border-border hover:border-accent hover:bg-red-50 transition-all">
-                    <span class="font-medium text-slate-700">И другие регионы</span>
+            <div class="bg-bg-light rounded-3xl p-8 lg:p-12 reveal">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Санкт-Петербург</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Ленинградская область</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Республика Карелия</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Челябинская область</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Республика Татарстан</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Великий Новгород</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Калининград</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Приморский край</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Рязанская область</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Псковская область</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">Республика Коми</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span>
+                        <span class="text-sm font-medium">И другие регионы</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA: Dark Editorial -->
-    <section id="contacts" class="py-24 bg-dark text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
-        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10 reveal">
-            <h2 class="text-4xl lg:text-6xl font-black mb-6">Готовы обсудить проект?</h2>
-            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                Свяжитесь с нами для демонстрации системы и получения персонального предложения
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="mailto:info@rocksoft.ru" class="bg-accent text-white px-10 py-5 sharp-sm font-bold text-lg hover:bg-red-700 transition-all flex items-center justify-center gap-3">
-                    <i data-lucide="mail" class="w-5 h-5"></i> info@rocksoft.ru
+    <!-- CTA Section -->
+    <section id="contacts" class="py-[50px] bg-[#C10000]">
+        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 text-center">
+            <h2 class="text-[48px] font-bold text-white mb-6">Давайте создадим вместе</h2>
+            <p class="text-xl text-white/90 mb-10">Расскажите о проекте — мы предложим решение</p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="tel:+79006333020" class="bg-white text-[#000022] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    +7 (900) 633-30-20
                 </a>
-                <a href="tel:+79006333020" class="bg-transparent border border-white/20 text-white px-10 py-5 sharp-sm font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-3">
-                    <i data-lucide="phone" class="w-5 h-5"></i> +7 (900) 633-30-20
+                <a href="mailto:info@rocksoft.ru" class="bg-[#000022] text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-[#263355] transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    info@rocksoft.ru
                 </a>
             </div>
-            <div class="mono-label text-sm text-slate-500">Ответим в течение 2 часов в рабочее время</div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-surface text-slate-900 py-16 border-t border-border">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-                <div class="lg:col-span-2">
-                    <div class="flex items-center gap-3 mb-6">
-                        <img src="../pics/logo.png" alt="Роксофт" class="h-8 w-auto">
-                        <span class="text-xl font-bold">Роксофт</span>
+    <footer class="py-16 bg-bg-darker text-bg-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <!-- Logo & Copyright -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="../pics/logo.png" alt="Роксофт" class="h-8 w-auto object-contain">
+                        <span class="text-xl font-bold text-white">Роксофт</span>
                     </div>
-                    <p class="text-slate-500 mb-6 max-w-md">
-                        Разработка IT-систем и программно-аппаратных комплексов для госсектора, бизнеса и образования
-                    </p>
+                    <p class="text-text-muted text-sm">© 2024 Роксофт.<br>Все права защищены.</p>
                 </div>
-                
+
+                <!-- Products -->
                 <div>
-                    <h4 class="font-bold mb-4">Продукты</h4>
-                    <ul class="space-y-3 text-sm text-slate-500">
+                    <h4 class="text-white font-semibold mb-4">ПРОДУКТЫ</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
                         <li><a href="postamat.html" class="hover:text-accent transition-colors">Постамат</a></li>
                         <li><a href="multimat.html" class="hover:text-accent transition-colors">Мультимат</a></li>
-                        <li><a href="wcms.html" class="hover:text-accent transition-colors">WCMS</a></li>
-                        <li><a href="air.html" class="hover:text-accent transition-colors">АИРЦИФРА</a></li>
+                        <li><a href="wcms.html" class="hover:text-accent transition-colors">WCMS-конструктор</a></li>
+                        <li><a href="turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+                        <li><a href="air.html" class="hover:text-accent transition-colors">АИР.ЦИФРА</a></li>
                     </ul>
                 </div>
 
+                <!-- Cases -->
                 <div>
-                    <h4 class="font-bold mb-4">Компания</h4>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li><a href="../about/about.html" class="hover:text-accent transition-colors">О нас</a></li>
+                    <h4 class="text-white font-semibold mb-4">КЕЙСЫ</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li><a href="../cases/postamatmfc.html" class="hover:text-accent transition-colors">Постоматы в МФЦ</a></li>
+                        <li><a href="../cases/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+                    </ul>
+                </div>
+
+                <!-- About -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">О НАС</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li><a href="../about/about.html" class="hover:text-accent transition-colors">О компании</a></li>
                         <li><a href="../about/team.html" class="hover:text-accent transition-colors">Команда</a></li>
+                        <li><a href="../about/opinions.html" class="hover:text-accent transition-colors">Отзывы</a></li>
+                        <li><a href="../about/rights.html" class="hover:text-accent transition-colors">Права</a></li>
                         <li><a href="../about/contacts.html" class="hover:text-accent transition-colors">Контакты</a></li>
                     </ul>
                 </div>
 
+                <!-- Contacts -->
                 <div>
-                    <h4 class="font-bold mb-4">Контакты</h4>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li>Санкт-Петербург, ул. Седова 11, БЦ "Эврика", офис 533</li>
+                    <h4 class="text-white font-semibold mb-4">КОНТАКТЫ</h4>
+                    <ul class="space-y-2 text-sm text-text-muted">
+                        <li>Санкт-Петербург, ул. Седова, 11А </li>
                         <li><a href="tel:+78006333020" class="hover:text-accent transition-colors">+7 (800) 633-30-20</a></li>
                         <li><a href="mailto:info@rocksoft.ru" class="hover:text-accent transition-colors">info@rocksoft.ru</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
-                <div>© 2026 ООО «Роксофт». Все права защищены.</div>
-                <div class="flex gap-6">
+            <div class="border-t border-text-muted/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted">
+                <div class="flex items-center gap-6">
+                    <span>© 2026 ООО «Роксофт»</span>
+                </div>
+                <div class="flex items-center gap-4">
                     <a href="#" class="hover:text-accent transition-colors">Политика конфиденциальности</a>
                     <a href="#" class="hover:text-accent transition-colors">Обработка ПД</a>
                 </div>
@@ -504,8 +650,24 @@
 
     <script>
         lucide.createIcons();
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
 
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        // Scroll reveal animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -515,35 +677,95 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
+        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.createElement('div');
         mobileMenu.id = 'mobile-menu';
-        mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 pt-[100px] px-6';
+        mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 pt-[100px] px-6 overflow-y-auto';
         mobileMenu.innerHTML = `
-            <div class="flex flex-col gap-6 text-xl">
-                <a href="../mainpage1.html" class="font-semibold text-slate-900 hover:text-accent">Главная</a>
-                <a href="#features" class="font-semibold text-slate-900 hover:text-accent">Возможности</a>
-                <a href="#cooperation" class="font-semibold text-slate-900 hover:text-accent">Сотрудничество</a>
-                <a href="../about/contacts.html" class="font-semibold text-accent">Контакты</a>
+            <div class="flex flex-col gap-4 text-lg">
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        Продукты
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="postamat.html" class="py-2 text-text-primary hover:text-accent">Постамат</a>
+                        <a href="multimat.html" class="py-2 text-text-primary hover:text-accent">Мультимат</a>
+                        <a href="wcms.html" class="py-2 text-text-primary hover:text-accent">WCMS-конструктор</a>
+                        <a href="turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+                        <a href="air.html" class="py-2 text-text-primary hover:text-accent">АИР.ЦИФРА</a>
+                        <a href="feedbacksys.html" class="py-2 text-text-primary hover:text-accent">Система обратной связи</a>
+                    </div>
+                </div>
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        Кейсы
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="../cases/postamatmfc.html" class="py-2 text-text-primary hover:text-accent">Постоматы в МФЦ</a>
+                        <a href="../cases/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+                    </div>
+                </div>
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        О нас
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="../about/about.html" class="py-2 text-text-primary hover:text-accent">О компании</a>
+                        <a href="../about/team.html" class="py-2 text-text-primary hover:text-accent">Команда</a>
+                        <a href="../about/opinions.html" class="py-2 text-text-primary hover:text-accent">Отзывы</a>
+                        <a href="../about/rights.html" class="py-2 text-text-primary hover:text-accent">Права</a>
+                        <a href="../about/contacts.html" class="py-2 text-text-primary hover:text-accent">Контакты</a>
+                    </div>
+                </div>
+                <a href="../about/contacts.html" class="py-3 text-bg-darker font-semibold border-b border-bg-card">Контакты</a>
+                <a href="tel:+78006333020" class="py-3 text-accent font-bold flex items-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    +7 (800) 633-30-20
+                </a>
             </div>
         `;
         document.body.appendChild(mobileMenu);
 
-        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            lucide.createIcons();
+        });
+
+        function toggleMobileDropdown(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('hidden');
+            content.classList.toggle('flex');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
         });
     </script>
 </body>
