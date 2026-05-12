@@ -100,9 +100,6 @@
         .dropdown:hover .dropdown-toggle::after {
             transform: rotate(180deg);
         }
-        .header-scrolled {
-            box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
-        }
     </style>
 </head>
 <body class="bg-white text-bg-darker">
@@ -178,7 +175,7 @@
         </div>
     </header>
 
-    <!-- Hero Section - Light background like Postamat -->
+    <!-- Hero Section -->
     <section class="gradient-hero pt-32 pb-20 lg:pt-40 lg:pb-32 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
@@ -225,7 +222,7 @@
                 
                 <div class="relative reveal">
                     <div class="bg-white rounded-3xl p-8 shadow-2xl">
-                        <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden relative bg-gray-50">
+                        <div class="w-full aspect-[16/9] rounded-2xl overflow-hidden relative bg-gray-50">
                             <img src="../pics/wcms.png" alt="WCMS" class="w-full h-full object-contain p-8">
                         </div>
                     </div>
@@ -234,138 +231,20 @@
         </div>
     </section>
 
-    <!-- Three Approaches - Separate Cards -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl lg:text-5xl font-black mb-4">Три подхода к <span class="text-gradient">созданию сайтов</span></h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Сравните методики. Гибридный подход WCMS объединяет лучшие стороны классики и полного редактора.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Classic -->
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
-                    <div class="text-xs text-gray-400 mb-4 font-mono">МЕТОД 01</div>
-                    <h3 class="text-2xl font-bold mb-4">Классический</h3>
-                    <p class="text-gray-600 text-sm mb-6">Готовая тема дизайна. Контент добавляется как в текстовом редакторе.</p>
-                    <ul class="space-y-3 text-sm text-gray-500">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
-                            <span>Ограниченная гибкость структуры</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
-                            <span>Сложно менять дизайн блоков</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Full Editor -->
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
-                    <div class="text-xs text-gray-400 mb-4 font-mono">МЕТОД 02</div>
-                    <h3 class="text-2xl font-bold mb-4">Полный редактор</h3>
-                    <p class="text-gray-600 text-sm mb-6">Максимальная свобода размещения элементов. Требует навыков дизайна.</p>
-                    <ul class="space-y-3 text-sm text-gray-500">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
-                            <span>Высокий порог входа для сотрудников</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"></i>
-                            <span>Риск нарушения фирменного стиля</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- WCMS Hybrid -->
-                <div class="bg-white border-2 border-accent rounded-3xl p-8 reveal relative">
-                    <div class="absolute -top-4 right-6 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
-                        Рекомендуем
-                    </div>
-                    <div class="text-xs text-accent mb-4 font-mono">МЕТОД 03 — WCMS</div>
-                    <h3 class="text-2xl font-bold mb-4">Гибридный</h3>
-                    <p class="text-gray-600 text-sm mb-6">Библиотека готовых блоков в вашем стиле. Редактирование без дизайна, но с полной свободой.</p>
-                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
-                            <span>Гибкость управления контентом</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
-                            <span>Не требует навыков дизайна</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
-                            <span>Независимость от разработчиков</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cooperation Stages - Like Multimat "How we work" -->
-    <section id="cooperation" class="py-20 bg-bg-light">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl lg:text-5xl font-black mb-4">Этапы <span class="text-gradient">сотрудничества</span></h2>
-                <p class="text-lg text-gray-600">Прозрачный процесс от выбора до запуска</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20 relative reveal">
-                <!-- Step 1 -->
-                <div class="relative md:border-r border-gray-200 md:pr-8 pb-8 md:pb-0">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">01</div>
-                    <div class="relative z-10 pt-4">
-                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">КОНСУЛЬТАЦИЯ</div>
-                        <h4 class="text-xl font-bold text-bg-darker mb-3">Консультация</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Проводим индивидуальный анализ задач. Определяем структуру, тип сайта и необходимый функционал.</p>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="relative md:border-r border-gray-200 md:px-4 pb-8 md:pb-0">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">02</div>
-                    <div class="relative z-10 pt-4">
-                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">СБОР МАТЕРИАЛОВ</div>
-                        <h4 class="text-xl font-bold text-bg-darker mb-3">Сбор материалов</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Направляем чек-лист для предоставления информации: данные, тексты, фотографии, бренд-бук.</p>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="relative md:border-r border-gray-200 md:px-4 pb-8 md:pb-0">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">03</div>
-                    <div class="relative z-10 pt-4">
-                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">РАЗРАБОТКА</div>
-                        <h4 class="text-xl font-bold text-bg-darker mb-3">Разработка</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Настраиваем дизайн, формируем структуру из контентных блоков, наполняем сайт и согласовываем правки.</p>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="relative md:pl-8">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">04</div>
-                    <div class="relative z-10 pt-4">
-                        <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">ЗАПУСК</div>
-                        <h4 class="text-xl font-bold text-bg-darker mb-3">Запуск и обучение</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Размещаем сайт в сети. Проводим обучение сотрудников (в среднем 40 мин). Оказываем техподдержку.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features: Bento Grid with Images - NEW LAYOUT -->
+    <!-- Features: Bento Grid with Images - UPDATED LAYOUT -->
     <section id="features" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl lg:text-5xl font-black mb-4">Всё необходимое <span class="text-gradient">в системе</span></h2>
             </div>
 
-            <div class="grid grid-cols-2 gap-6">
-                <!-- Row 1: Low-code blocks (small) + Technical SEO (big with image) -->
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+            <!-- Grid: 1 col on mobile, 3 cols on desktop -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Row 1 -->
+                
+                <!-- Card 1: Low-code blocks (Small) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal md:col-span-1 flex flex-col">
                     <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
                         <i data-lucide="blocks" class="w-7 h-7 text-accent"></i>
                     </div>
@@ -373,26 +252,42 @@
                     <p class="text-gray-600 text-sm leading-relaxed">Каждый блок имеет свой интерфейс: диаграммы, текст, картинки, формы. Создавайте страницы как конструктор без программирования.</p>
                 </div>
 
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
-                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="search" class="w-7 h-7 text-accent"></i>
+                <!-- Card 2: Technical SEO (Big) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal md:col-span-2">
+                    <div class="flex flex-col md:flex-row items-center gap-6 h-full">
+                        <div class="flex-1">
+                            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
+                                <i data-lucide="search" class="w-7 h-7 text-accent"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Техническое SEO</h3>
+                            <p class="text-gray-600 text-sm">Автоматическая конвертация в WEBP, асинхронная загрузка, Sitemap, 80+ баллов PageSpeed.</p>
+                        </div>
+                        <div class="flex-1 flex justify-center">
+                            <img src="../pics/wcms-ex-1.png" alt="SEO" class="w-full h-auto object-contain rounded-xl shadow-sm">
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Техническое SEO</h3>
-                    <p class="text-gray-600 text-sm mb-4">Автоматическая конвертация в WEBP, асинхронная загрузка, Sitemap, 80+ баллов PageSpeed.</p>
-                    <img src="../pics/wcms-ex-1.png" alt="SEO" class="w-full h-32 object-contain rounded-xl mt-4">
                 </div>
 
-                <!-- Row 2: Multidomain (big with image) + Responsive (small) -->
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
-                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="globe" class="w-7 h-7 text-accent"></i>
+                <!-- Row 2 -->
+
+                <!-- Card 3: Multidomain (Big) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal md:col-span-2">
+                    <div class="flex flex-col md:flex-row items-center gap-6 h-full">
+                        <div class="flex-1">
+                            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
+                                <i data-lucide="globe" class="w-7 h-7 text-accent"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Мультидоменность</h3>
+                            <p class="text-gray-600 text-sm">Неограниченное количество сайтов в одной админке с разграничением прав доступа.</p>
+                        </div>
+                        <div class="flex-1 flex justify-center">
+                            <img src="../pics/wcms-ex-2.png" alt="Multidomain" class="w-full h-auto object-contain rounded-xl shadow-sm">
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Мультидоменность</h3>
-                    <p class="text-gray-600 text-sm mb-4">Неограниченное количество сайтов в одной админке с разграничением прав доступа.</p>
-                    <img src="../pics/wcms-ex-2.png" alt="Multidomain" class="w-full h-32 object-contain rounded-xl mt-4">
                 </div>
 
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                <!-- Card 4: Responsive (Small) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal md:col-span-1 flex flex-col">
                     <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
                         <i data-lucide="smartphone" class="w-7 h-7 text-accent"></i>
                     </div>
@@ -400,8 +295,10 @@
                     <p class="text-gray-600 text-sm">Полная адаптированность для мобильных устройств и планшетов. Доступ с любых устройств.</p>
                 </div>
 
-                <!-- Row 3: Forms (small) + Themes (big with image) -->
-                <div class="bg-gray-50 rounded-3xl p-8 reveal">
+                <!-- Row 3 -->
+
+                <!-- Card 5: Forms (Small) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal md:col-span-1 flex flex-col">
                     <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
                         <i data-lucide="file-check" class="w-7 h-7 text-accent"></i>
                     </div>
@@ -409,19 +306,26 @@
                     <p class="text-gray-600 text-sm">Встроенный конструктор форм и детальная настройка маршрутизации заявок.</p>
                 </div>
 
-                <div class="bg-bg-dark text-white rounded-3xl p-8 reveal">
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="layout-template" class="w-7 h-7 text-white"></i>
+                <!-- Card 6: Themes (Big, Dark) -->
+                <div class="bg-gray-50 rounded-3xl p-8 reveal md:col-span-2">
+                    <div class="flex flex-col md:flex-row items-center gap-6 h-full">
+                        <div class="flex-1">
+                            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
+                                <i data-lucide="globe" class="w-7 h-7 text-accent"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Сменные темы</h3>
+                            <p class="text-gray-600 text-sm">Позволяющие создать сайт по вашему вкусу и адаптировать под государственные структуры.</p>
+                        </div>
+                        <div class="flex-1 flex justify-center">
+                            <img src="../pics/wcms-ex-3.png" alt="Themes" class="w-full h-auto object-contain rounded-xl shadow-sm">
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Сменные темы</h3>
-                    <p class="text-gray-300 text-sm mb-4">Позволяющие создать сайт по вашему вкусу и адаптировать под государственные структуры.</p>
-                    <img src="../pics/wcms-ex-3.png" alt="Themes" class="w-full h-32 object-contain rounded-xl mt-4">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Advantages -->
+    <!-- Why WCMS / Advantages -->
     <section class="py-20 bg-bg-light">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
