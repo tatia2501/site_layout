@@ -319,60 +319,109 @@
             </div>
 
             <!-- Interaction Scheme -->
-            <div class="bg-white rounded-3xl p-8 lg:p-12 reveal">
-                <h3 class="text-2xl font-bold text-center mb-12">Схема взаимодействия</h3>
-                <div class="grid md:grid-cols-4 gap-4">
-                    <div class="text-center">
-                        <div class="bg-blue-50 rounded-2xl p-6 mb-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i data-lucide="user" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="font-bold text-bg-darker">Инвестор</div>
-                        </div>
-                        <p class="text-sm text-gray-600">Направляет обращение через личный кабинет</p>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <i data-lucide="arrow-right" class="w-6 h-6 text-gray-400 hidden md:block"></i>
-                        <i data-lucide="arrow-down" class="w-6 h-6 text-gray-400 md:hidden"></i>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-accent/10 rounded-2xl p-6 mb-4">
-                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i data-lucide="briefcase" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="font-bold text-bg-darker">Агентство</div>
-                        </div>
-                        <p class="text-sm text-gray-600">Назначает ответственного и контролирует сроки</p>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <i data-lucide="arrow-right" class="w-6 h-6 text-gray-400 hidden md:block"></i>
-                        <i data-lucide="arrow-down" class="w-6 h-6 text-gray-400 md:hidden"></i>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-orange-50 rounded-2xl p-6 mb-4">
-                            <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i data-lucide="users" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="font-bold text-bg-darker">Исполнитель</div>
-                        </div>
-                        <p class="text-sm text-gray-600">Готовит ответ и направляет инвестору</p>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <i data-lucide="arrow-right" class="w-6 h-6 text-gray-400 hidden md:block"></i>
-                        <i data-lucide="arrow-down" class="w-6 h-6 text-gray-400 md:hidden"></i>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-green-50 rounded-2xl p-6 mb-4">
-                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="font-bold text-bg-darker">Результат</div>
-                        </div>
-                        <p class="text-sm text-gray-600">Инвестор получает ответ и оценивает качество</p>
-                    </div>
+<!-- Interaction Scheme -->
+<div class="bg-white rounded-3xl p-8 lg:p-12 reveal">
+    <h3 class="text-2xl font-bold text-center mb-12">Схема взаимодействия</h3>
+    
+    <!-- Desktop: Flex with arrows -->
+    <div class="hidden lg:flex items-center justify-center gap-2">
+        <!-- Step 1: Investor -->
+        <div class="text-center flex-shrink-0 w-[200px]">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-bg-dark rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="user" class="w-5 h-5 text-white"></i>
                 </div>
+                <div class="font-bold text-bg-darker text-sm">Инвестор</div>
             </div>
+            <p class="text-xs text-text-secondary leading-tight">Направляет обращение через личный кабинет</p>
         </div>
+
+        <!-- Arrow -->
+        <i data-lucide="arrow-right" class="w-5 h-5 text-accent flex-shrink-0"></i>
+
+        <!-- Step 2: Agency -->
+        <div class="text-center flex-shrink-0 w-[200px]">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="briefcase" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Агентство</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Назначает ответственного и контролирует сроки</p>
+        </div>
+
+        <!-- Arrow -->
+        <i data-lucide="arrow-right" class="w-5 h-5 text-accent flex-shrink-0"></i>
+
+        <!-- Step 3: Executor -->
+        <div class="text-center flex-shrink-0 w-[200px]">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-bg-dark rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="users" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Исполнитель</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Готовит ответ и направляет инвестору</p>
+        </div>
+
+        <!-- Arrow -->
+        <i data-lucide="arrow-right" class="w-5 h-5 text-accent flex-shrink-0"></i>
+
+        <!-- Step 4: Result -->
+        <div class="text-center flex-shrink-0 w-[200px]">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Результат</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Инвестор получает ответ и оценивает качество</p>
+        </div>
+    </div>
+
+    <!-- Mobile: Grid without arrows -->
+    <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="text-center">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-bg-dark rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="user" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Инвестор</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Направляет обращение через личный кабинет</p>
+        </div>
+
+        <div class="text-center">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="briefcase" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Агентство</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Назначает ответственного и контролирует сроки</p>
+        </div>
+
+        <div class="text-center">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-bg-dark rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="users" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Исполнитель</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Готовит ответ и направляет инвестору</p>
+        </div>
+
+        <div class="text-center">
+            <div class="bg-bg-light rounded-xl p-4 mb-3">
+                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="font-bold text-bg-darker text-sm">Результат</div>
+            </div>
+            <p class="text-xs text-text-secondary leading-tight">Инвестор получает ответ и оценивает качество</p>
+        </div>
+    </div>
+</div>
     </section>
 
     <!-- Features -->
