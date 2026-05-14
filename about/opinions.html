@@ -118,85 +118,75 @@
 <body class="smooth-scroll bg-gradient-to-br from-gray-50 to-bg-light min-h-screen">
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 h-[80px] bg-white/90 backdrop-blur-md z-50 shadow-sm">
-        <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 h-full flex items-center justify-between">
-            <a href="../mainpage1.html" class="flex items-center gap-3">
-                <img src="../pics/logo.png" alt="Роксофт" class="h-10 w-auto object-contain">
-                <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-bg-darker tracking-tight">Роксофт<span class="text-sm align-top">®</span></span>
-                    <span class="text-xs text-text-muted">Разработка IT решений</span>
-                </div>
-            </a>
+<header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-white z-50 transition-all duration-300">
+  <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 h-full flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="pics/logo.png" alt="Роксофт" class="h-10 w-auto object-contain">
+      <span class="text-2xl font-bold text-bg-darker tracking-tight">Роксофт<span class="text-sm align-top">®</span></span>
+    </a>
 
-            <!-- Desktop Navigation with Dropdowns -->
-            <nav class="hidden lg:flex items-center gap-10 ml-20">
-                
-                <!-- Продукты -->
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
-                        Продукты
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="../projects/postamat.html" class="dropdown-item">Постамат</a>
-                        <a href="../projects/multimat.html" class="dropdown-item">Мультимат</a>
-                        <a href="../projects/wcms.html" class="dropdown-item">WCMS-конструктор</a>
-                        <a href="../projects/turportal.html" class="dropdown-item">Туристический портал</a>
-                        <a href="../projects/air.html" class="dropdown-item">АИР.ЦИФРА</a>
-                        <a href="../projects/feedbacksys.html" class="dropdown-item">Система обратной связи</a>
-                    </div>
-                </div>
-
-                <!-- Услуги -->
-                <a href="../services.html" class="text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
-                    Услуги
-                </a>
-
-                <!-- Кейсы -->
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
-                        Кейсы
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="../cases/postamatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
-                        <a href="../cases/turportal.html" class="dropdown-item">Туристический портал</a>
-                    </div>
-                </div>
-
-                <!-- О нас -->
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
-                        О нас
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="../about/about.html" class="dropdown-item">О компании</a>
-                        <a href="../about/team.html" class="dropdown-item">Команда</a>
-                        <a href="../about/contacts.html" class="dropdown-item">Контакты</a>
-                        <a href="../about/opinions.html" class="dropdown-item">Отзывы</a>
-                        <a href="../about/rights.html" class="dropdown-item">Права</a>
-                    </div>
-                </div>
-
-            </nav>
-
-            <div class="hidden lg:flex items-center gap-6">
-                <div class="flex items-center gap-2 text-sm text-[#8A96B3]">
-                    <button class="font-semibold text-accent text-[14px]">RU</button>
-                    <span>/</span>
-                    <button class="hover:text-accent transition-colors text-[14px]">EN</button>
-                </div>
-                <div class="w-px h-4 bg-[#B8C0D4]"></div>
-                <a href="tel:+78006333020" class="text-bg-darker font-bold hover:text-accent transition-colors flex items-center gap-2 text-[15px]">
-                    <i data-lucide="phone" class="w-4 h-4"></i>
-                    +7 (800) 633-30-20
-                </a>
-            </div>
-
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-text-primary">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+    <!-- Desktop Navigation with Dropdowns -->
+    <nav class="hidden lg:flex items-center gap-10 ml-20">
+      <!-- Продукты -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+          Продукты
+        </a>
+        <div class="dropdown-menu">
+          <a href="projects/postamat.html" class="dropdown-item">Постамат</a>
+          <a href="projects/multimat.html" class="dropdown-item">Мультимат</a>
+          <a href="projects/wcms.html" class="dropdown-item">WCMS-конструктор</a>
+          <a href="projects/turportal.html" class="dropdown-item">Туристический портал</a>
+          <a href="projects/air.html" class="dropdown-item">АИР.ЦИФРА</a>
+          <a href="projects/feedbacksys.html" class="dropdown-item">Система обратной связи</a>
         </div>
-    </header>
+      </div>
 
+      <!-- Кейсы -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+          Кейсы
+        </a>
+        <div class="dropdown-menu">
+          <a href="cases/postamatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
+          <a href="cases/turportal.html" class="dropdown-item">Туристический портал</a>
+        </div>
+      </div>
+
+      <!-- О нас -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+          О нас
+        </a>
+        <div class="dropdown-menu">
+          <a href="about/company.html" class="dropdown-item">О компании</a>
+          <a href="about/team.html" class="dropdown-item">Команда</a>
+          <a href="about/opinions.html" class="dropdown-item">Отзывы</a>
+          <a href="about/rights.html" class="dropdown-item">Права</a>
+        </div>
+      </div>
+
+      <!-- Контакты (отдельно) -->
+      <a href="about/contacts.html" class="text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+        Контакты
+      </a>
+    </nav>
+
+    <!-- Right Side -->
+    <div class="hidden lg:flex items-center gap-6">
+      <div class="w-px h-4 bg-[#B8C0D4]"></div>
+      <a href="tel:+78006333020" class="text-bg-darker font-bold hover:text-accent transition-colors flex items-center gap-2 text-[15px]">
+        +7 (800) 633-30-20
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="lg:hidden p-2 text-text-primary">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+</header>
     <!-- Main Content -->
     <main class="pt-[140px] pb-[120px] px-6 lg:px-[120px] max-w-[1440px] mx-auto">
 
@@ -306,40 +296,40 @@
                 </div>
 
                 <div>
-                    <h4 class="text-white font-semibold mb-4">ПРО РОКСОФТ</h4>
+                    <h4 class="text-white font-semibold mb-4">О НАС</h4>
                     <ul class="space-y-2 text-sm text-text-muted">
+                        <li><a href="about.html" class="hover:text-accent transition-colors">О компании</a></li>
+                        <li><a href="team.html" class="hover:text-accent transition-colors">Команда</a></li>
                         <li><a href="contacts.html" class="hover:text-accent transition-colors">Контакты</a></li>
                         <li><a href="opinions.html" class="hover:text-accent transition-colors">Отзывы</a></li>
-                        <li><a href="team.html" class="hover:text-accent transition-colors">Команда</a></li>
-                        <li><a href="tech.html" class="hover:text-accent transition-colors">Технологии</a></li>
+                        <li><a href="rights.html" class="hover:text-accent transition-colors">Права</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-semibold mb-4">ПРО ПРОДУКТЫ</h4>
+                    <h4 class="text-white font-semibold mb-4">ПРОДУКТЫ</h4>
                     <ul class="space-y-2 text-sm text-text-muted">
-                        <li><a href="../projects/postamat.html" class="hover:text-accent transition-colors">АТК Постамат</a></li>
-                        <li><a href="../projects/multimat.html" class="hover:text-accent transition-colors">АТК Мультимат</a></li>
-                        <li><a href="../projects/air.html" class="hover:text-accent transition-colors">АИРЦИФРА</a></li>
+                        <li><a href="../projects/postamat.html" class="hover:text-accent transition-colors">Постамат</a></li>
+                        <li><a href="../projects/multimat.html" class="hover:text-accent transition-colors">Мультимат</a></li>
                         <li><a href="../projects/wcms.html" class="hover:text-accent transition-colors">WCMS-конструктор</a></li>
+                        <li><a href="../projects/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+                        <li><a href="../projects/air.html" class="hover:text-accent transition-colors">АИР.ЦИФРА</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-semibold mb-4">ПРО УСЛУГИ</h4>
+                    <h4 class="text-white font-semibold mb-4">КЕЙСЫ</h4>
                     <ul class="space-y-2 text-sm text-text-muted">
-                        <li><a href="../services.html#dev" class="hover:text-accent transition-colors">Разработка ПО</a></li>
-                        <li><a href="../services.html#hardware" class="hover:text-accent transition-colors">Разработка АТК</a></li>
-                        <li><a href="../services.html#consulting" class="hover:text-accent transition-colors">IT-консалтинг</a></li>
-                        <li><a href="../services.html#support" class="hover:text-accent transition-colors">Поддержка</a></li>
+                        <li><a href="../cases/postamatmfc.html" class="hover:text-accent transition-colors">Постоматы в МФЦ</a></li>
+                        <li><a href="../cases/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-text-muted/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted">
                 <div class="flex items-center gap-6">
-                    <span>Санкт-Петербург, ул. Профессора Попова, 5</span>
-                    <a href="tel:+78006333020" class="hover:text-accent transition-colors">+7 (800) 633-30-20</a>
+                    <span>© 2026 ООО «Роксофт»</span>
+                    <span>Санкт-Петербург, ул. Седова, 11А</span>
                 </div>
                 <div class="flex items-center gap-4">
                     <a href="#" class="hover:text-accent transition-colors">Политика конфиденциальности</a>
@@ -419,26 +409,73 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.createElement('div');
         mobileMenu.id = 'mobile-menu';
-        mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 pt-[100px] px-6';
+        mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 pt-[100px] px-6 overflow-y-auto';
         mobileMenu.innerHTML = `
-            <div class="flex flex-col gap-6 text-xl">
-                <a href="../mainpage1.html" class="font-semibold text-bg-darker hover:text-accent">Продукты</a>
-                <a href="../services.html" class="font-semibold text-bg-darker hover:text-accent">Услуги</a>
-                <a href="../cases.html" class="font-semibold text-bg-darker hover:text-accent">Кейсы</a>
-                <a href="contacts.html" class="font-semibold text-bg-darker hover:text-accent">Контакты</a>
-                <a href="team.html" class="font-semibold text-bg-darker hover:text-accent">Команда</a>
+            <div class="flex flex-col gap-4 text-lg">
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        Продукты
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="../projects/postamat.html" class="py-2 text-text-primary hover:text-accent">Постамат</a>
+                        <a href="../projects/multimat.html" class="py-2 text-text-primary hover:text-accent">Мультимат</a>
+                        <a href="../projects/wcms.html" class="py-2 text-text-primary hover:text-accent">WCMS-конструктор</a>
+                        <a href="../projects/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+                        <a href="../projects/air.html" class="py-2 text-text-primary hover:text-accent">АИР.ЦИФРА</a>
+                        <a href="../projects/feedbacksys.html" class="py-2 text-text-primary hover:text-accent">Система обратной связи</a>
+                    </div>
+                </div>
+                <a href="../services.html" class="py-3 text-bg-darker font-semibold border-b border-bg-card">Услуги</a>
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        Кейсы
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="../cases/postamatmfc.html" class="py-2 text-text-primary hover:text-accent">Постоматы в МФЦ</a>
+                        <a href="../cases/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+                    </div>
+                </div>
+                <div class="dropdown-mobile">
+                    <button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+                        О нас
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="hidden flex-col gap-2 py-2 pl-4">
+                        <a href="about.html" class="py-2 text-text-primary hover:text-accent">О компании</a>
+                        <a href="team.html" class="py-2 text-text-primary hover:text-accent">Команда</a>
+                        <a href="contacts.html" class="py-2 text-text-primary hover:text-accent">Контакты</a>
+                        <a href="opinions.html" class="py-2 text-text-primary hover:text-accent">Отзывы</a>
+                        <a href="rights.html" class="py-2 text-text-primary hover:text-accent">Права</a>
+                    </div>
+                </div>
+                <a href="tel:+78006333020" class="py-3 text-accent font-bold flex items-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    +7 (800) 633-30-20
+                </a>
             </div>
         `;
         document.body.appendChild(mobileMenu);
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            lucide.createIcons();
         });
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+        function toggleMobileDropdown(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('hidden');
+            content.classList.toggle('flex');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
-            });
+            }
         });
     </script>
 </body>
