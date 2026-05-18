@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О компании Роксофт — Надёжный разработчик IT-решений</title>
+<meta name="description" content="Роксофт — российский разработчик высоконагруженных систем и программно-аппаратных комплексов. 10+ лет опыта, 80+ проектов, 24 региона РФ.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+accent: '#C10000',
+'bg-light': '#F0F2F5',
+'bg-card': '#D8DCE6',
+'text-muted': '#8A96B3',
+'text-secondary': '#687599',
+'text-primary': '#4D5C7A',
+'bg-dark': '#263355',
+'bg-darker': '#000022',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+body {
+font-family: 'Inter', sans-serif;
+overflow-x: hidden;
+}
+.stat-card {
+transition: all 0.3s ease;
+background: white;
+border: 2px solid #C10000;
+box-shadow: 0 4px 15px rgba(193, 0, 0, 0.15);
+padding: 32px 24px;
+border-radius: 16px;
+}
+.stat-card:hover {
+transform: translateY(-8px) scale(1.02);
+box-shadow: 0 12px 30px rgba(193, 0, 0, 0.25);
+}
+.value-card {
+transition: all 0.3s ease;
+}
+.value-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 40px rgba(0, 0, 34, 0.15);
+}
+.timeline-item {
+position: relative;
+padding-left: 40px;
+}
+.timeline-item::before {
+content: '';
+position: absolute;
+left: 0;
+top: 8px;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+background: #C10000;
+border: 3px solid white;
+box-shadow: 0 0 0 2px #C10000;
+}
+.timeline-item::after {
+content: '';
+position: absolute;
+left: 7px;
+top: 24px;
+bottom: -24px;
+width: 2px;
+background: #D8DCE6;
+}
+.timeline-item:last-child::after {
+display: none;
+}
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: all 0.8s ease-out;
+}
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+.dropdown {
+position: relative;
+}
+.dropdown-menu {
+position: absolute;
+top: 100%;
+left: 0;
+min-width: 240px;
+background: white;
+border-radius: 12px;
+box-shadow: 0 10px 40px rgba(0, 0, 34, 0.15);
+padding: 12px 0;
+opacity: 0;
+visibility: hidden;
+transform: translateY(10px);
+transition: all 0.2s ease;
+z-index: 100;
+}
+.dropdown:hover .dropdown-menu {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+}
+.dropdown-item {
+display: block;
+padding: 10px 20px;
+color: #4D5C7A;
+font-size: 14px;
+font-weight: 500;
+transition: all 0.2s ease;
+}
+.dropdown-item:hover {
+background: #F0F2F5;
+color: #C10000;
+padding-left: 24px;
+}
+.dropdown-toggle::after {
+content: '';
+display: inline-block;
+width: 0;
+height: 0;
+margin-left: 4px;
+vertical-align: middle;
+border-left: 4px solid transparent;
+border-right: 4px solid transparent;
+border-top: 4px solid #4D5C7A;
+transition: transform 0.2s ease;
+}
+.dropdown:hover .dropdown-toggle::after {
+transform: rotate(180deg);
+}
+.header-scrolled {
+box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+}
+</style>
+</head>
+<body class="smooth-scroll bg-white text-bg-darker">
+<!-- Header -->
+<header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-white z-50 transition-all duration-300">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 h-full flex items-center justify-between">
+<!-- Logo -->
+<a href="../index.html" class="flex items-center gap-3">
+<img src="../pics/logo.png" alt="Роксофт" class="h-10 w-auto object-contain">
+<span class="text-2xl font-bold text-bg-darker tracking-tight">Роксофт<span class="text-sm align-top">®</span></span>
+</a>
+<!-- Desktop Navigation with Dropdowns -->
+<nav class="hidden lg:flex items-center gap-10 ml-20">
+<!-- Продукты -->
+<div class="dropdown">
+<a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+Продукты
+</a>
+<div class="dropdown-menu">
+<a href="../projects/postamat.html" class="dropdown-item">Постамат</a>
+<a href="../projects/multimat.html" class="dropdown-item">Мультимат</a>
+<a href="../projects/wcms.html" class="dropdown-item">WCMS-конструктор</a>
+<a href="../projects/turportal.html" class="dropdown-item">Туристический портал</a>
+<a href="../projects/air.html" class="dropdown-item">АИР.ЦИФРА</a>
+<a href="../projects/feedbacksys.html" class="dropdown-item">Система обратной связи</a>
+</div>
+</div>
+<!-- Кейсы -->
+<div class="dropdown">
+<a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+Кейсы
+</a>
+<div class="dropdown-menu">
+<a href="/cases/postamatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
+<a href="/cases/turportal.html" class="dropdown-item">Туристический портал</a>
+</div>
+</div>
+<!-- О нас -->
+<div class="dropdown">
+<a href="#" class="dropdown-toggle flex items-center gap-1 text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+О нас
+</a>
+<div class="dropdown-menu">
+<a href="about.html" class="dropdown-item">О компании</a>
+<a href="team.html" class="dropdown-item">Команда</a>
+<a href="opinions.html" class="dropdown-item">Отзывы</a>
+<a href="rights.html" class="dropdown-item">Права</a>
+</div>
+</div>
+<!-- Контакты (отдельно) -->
+<a href="contacts.html" class="text-[#4D5C7A] font-medium hover:text-accent transition-colors text-[15px] py-4">
+Контакты
+</a>
+</nav>
+<!-- Right Side -->
+<div class="hidden lg:flex items-center gap-6">
+<div class="w-px h-4 bg-[#B8C0D4]"></div>
+<a href="tel:+78006333020" class="text-bg-darker font-bold hover:text-accent transition-colors flex items-center gap-2 text-[15px]">
++7 (800) 633-30-20
+</a>
+</div>
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-btn" class="lg:hidden p-2 text-text-primary">
+<i data-lucide="menu" class="w-6 h-6"></i>
+</button>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative pt-[120px] pb-[80px] mt-[80px] bg-gradient-to-br from-bg-light via-white to-bg-light">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="reveal">
+<div class="inline-flex items-center gap-2 bg-accent/10 border-2 border-accent/30 rounded-full px-4 py-2 mb-6">
+<span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+<span class="text-accent text-[14px] font-bold uppercase tracking-[2px]">С 2014 ГОДА</span>
+</div>
+<h1 class="text-[48px] lg:text-[56px] font-bold text-bg-darker mb-6 leading-[1.1]">
+О компании <span class="text-accent">Роксофт</span>
+</h1>
+<p class="text-[18px] text-[#4D5C7A] leading-[28px] mb-8">
+Мы создаём технологические решения, которые меняют бизнес к лучшему. 
+Более 10 лет разрабатываем высоконагруженные системы для госсектора и бизнеса по всей России.
+</p>
+<div class="flex flex-wrap gap-4">
+<a href="#values" class="px-8 py-4 bg-accent text-white font-semibold rounded-xl hover:bg-red-700 transition-all shadow-[0px_8px_20px_rgba(193,0,0,0.3)] text-[16px] flex items-center gap-2">
+Наши ценности
+<i data-lucide="arrow-down" class="w-5 h-5"></i>
+</a>
+<a href="contacts.html" class="px-8 py-4 bg-transparent border-2 border-bg-dark text-bg-dark font-semibold rounded-xl hover:bg-bg-dark hover:text-white transition-all text-[16px]">
+Связаться с нами
+</a>
+</div>
+</div>
+<div class="relative reveal">
+<div class="bg-white rounded-3xl p-6 shadow-2xl">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center">
+<img src="../pics/main-banner-square.png" alt="Команда Роксофт" class="w-full h-full object-cover">
+</div>
+</div>
+<div class="absolute -bottom-4 -right-4 bg-bg-dark text-white rounded-2xl shadow-xl p-6 hidden lg:block">
+<div class="text-center">
+<div class="text-3xl font-bold mb-1">24</div>
+<div class="text-sm opacity-90">региона РФ</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-[60px] bg-white">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+<div class="stat-card text-center">
+<div class="text-[48px] lg:text-[64px] font-bold text-accent leading-none mb-2">10+</div>
+<div class="text-[18px] text-bg-dark font-bold mb-1">лет на рынке</div>
+<div class="text-[14px] text-[#8A96B3]">разработки сложных систем</div>
+</div>
+<div class="stat-card text-center">
+<div class="text-[48px] lg:text-[64px] font-bold text-bg-dark leading-none mb-2">80+</div>
+<div class="text-[18px] text-bg-dark font-bold mb-1">реализованных проектов</div>
+<div class="text-[14px] text-[#8A96B3]">на базе отечественного ПО</div>
+</div>
+<div class="stat-card text-center">
+<div class="text-[48px] lg:text-[64px] font-bold text-accent leading-none mb-2">24</div>
+<div class="text-[18px] text-bg-dark font-bold mb-1">региона России</div>
+<div class="text-[14px] text-[#8A96B3]">доверяют наши решения</div>
+</div>
+<div class="stat-card text-center">
+<div class="text-[48px] lg:text-[64px] font-bold text-bg-dark leading-none mb-2">100%</div>
+<div class="text-[18px] text-bg-dark font-bold mb-1">импортозамещение</div>
+<div class="text-[14px] text-[#8A96B3]">в реестре отечественного ПО</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Mission & Values -->
+<section id="values" class="py-[100px] bg-bg-light">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="text-center mb-16 reveal">
+<h2 class="text-[36px] lg:text-[48px] font-bold text-bg-darker mb-4">Наша миссия и ценности</h2>
+<p class="text-lg text-[#4D5C7A] max-w-3xl mx-auto">
+Мы верим, что технологии должны служить людям. Создаём решения, которые делают государственные услуги и бизнес-процессы доступнее, быстрее и надёжнее.
+</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="value-card bg-white rounded-2xl p-8 text-center reveal">
+<div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i data-lucide="target" class="w-8 h-8 text-accent"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Фокус на результате</h3>
+<p class="text-sm text-[#687599]">Гарантируем качество и соблюдение сроков на каждом этапе проекта</p>
+</div>
+<div class="value-card bg-white rounded-2xl p-8 text-center reveal">
+<div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i data-lucide="shield-check" class="w-8 h-8 text-accent"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Безопасность</h3>
+<p class="text-sm text-[#687599]">Соответствие требованиям ФСТЭК, ФЗ-152 и отраслевым стандартам</p>
+</div>
+<div class="value-card bg-white rounded-2xl p-8 text-center reveal">
+<div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i data-lucide="users" class="w-8 h-8 text-accent"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Партнёрство</h3>
+<p class="text-sm text-[#687599]">Работаем как продолжение вашей команды, погружаясь в задачи бизнеса</p>
+</div>
+<div class="value-card bg-white rounded-2xl p-8 text-center reveal">
+<div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i data-lucide="trending-up" class="w-8 h-8 text-accent"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Инновации</h3>
+<p class="text-sm text-[#687599]">Внедряем передовые технологии: AI, BigData, микросервисную архитектуру</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Expertise Section -->
+<section class="py-[100px] bg-white">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="reveal">
+<h2 class="text-[36px] lg:text-[48px] font-bold text-bg-darker mb-6">Наша экспертиза</h2>
+<p class="text-lg text-[#4D5C7A] mb-6 leading-relaxed">
+За годы работы мы накопили глубокие компетенции в создании сложных информационных систем для государственного и коммерческого секторов.
+</p>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+<i data-lucide="check" class="w-5 h-5 text-accent"></i>
+</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Разработка веб-порталов и приложений</h4>
+<p class="text-sm text-[#687599]">Высоконагруженные системы с интеграцией в существующую ИТ-инфраструктуру</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+<i data-lucide="check" class="w-5 h-5 text-accent"></i>
+</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Программно-аппаратные комплексы</h4>
+<p class="text-sm text-[#687599]">Собственная разработка и производство терминалов самообслуживания</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+<i data-lucide="check" class="w-5 h-5 text-accent"></i>
+</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Импортозамещение</h4>
+<p class="text-sm text-[#687599]">Все продукты в реестре отечественного ПО, полная совместимость с российскими ОС</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+<i data-lucide="check" class="w-5 h-5 text-accent"></i>
+</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">IT-консалтинг</h4>
+<p class="text-sm text-[#687599]">Аудит, проектирование архитектуры и сопровождение на всём жизненном цикле</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative reveal">
+<div class="bg-bg-light rounded-3xl p-8">
+<h3 class="text-2xl font-bold mb-6 text-center">Технологический стек</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white rounded-xl p-4 text-center">
+<div class="text-2xl font-bold text-accent mb-1">PHP</div>
+<div class="text-xs text-[#687599]">Webasyst, Laravel</div>
+</div>
+<div class="bg-white rounded-xl p-4 text-center">
+<div class="text-2xl font-bold text-accent mb-1">Python</div>
+<div class="text-xs text-[#687599]">Django, FastAPI</div>
+</div>
+<div class="bg-white rounded-xl p-4 text-center">
+<div class="text-2xl font-bold text-accent mb-1">JS/TS</div>
+<div class="text-xs text-[#687599]">React, Vue, Node.js</div>
+</div>
+<div class="bg-white rounded-xl p-4 text-center">
+<div class="text-2xl font-bold text-accent mb-1">PostgreSQL</div>
+<div class="text-xs text-[#687599]">MySQL, Redis</div>
+</div>
+<div class="bg-white rounded-xl p-4 text-center">
+<div class="text-2xl font-bold text-accent mb-1">Docker</div>
+<div class="text-xs text-[#687599">Kubernetes, CI/CD</div>
+</div>
+<div class="bg-white rounded-xl p-4 text-center">
+<div class="text-2xl font-bold text-accent mb-1">Linux</div>
+<div class="text-xs text-[#687599">Astra Linux, РЕД ОС</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Timeline Section -->
+<section class="py-[100px] bg-bg-light">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="text-center mb-16 reveal">
+<h2 class="text-[36px] lg:text-[48px] font-bold text-bg-darker mb-4">Наш путь</h2>
+<p class="text-lg text-[#4D5C7A] max-w-2xl mx-auto">Ключевые этапы развития компании</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="timeline-item pb-8 reveal">
+<h4 class="text-xl font-bold text-bg-darker mb-2">2014</h4>
+<p class="text-[#687599]">Основание компании. Начало разработки первых веб-решений для регионального госсектора.</p>
+</div>
+<div class="timeline-item pb-8 reveal">
+<h4 class="text-xl font-bold text-bg-darker mb-2">2017</h4>
+<p class="text-[#687599]">Запуск первого программно-аппаратного комплекса. Выход на рынок терминалов самообслуживания.</p>
+</div>
+<div class="timeline-item pb-8 reveal">
+<h4 class="text-xl font-bold text-bg-darker mb-2">2020</h4>
+<p class="text-[#687599]">Включение продуктов в реестр отечественного ПО. Начало работы по импортозамещению.</p>
+</div>
+<div class="timeline-item pb-8 reveal">
+<h4 class="text-xl font-bold text-bg-darker mb-2">2022</h4>
+<p class="text-[#687599]">Масштабирование географии: проекты в 15+ регионах России. Запуск платформы АИР.ЦИФРА.</p>
+</div>
+<div class="timeline-item reveal">
+<h4 class="text-xl font-bold text-bg-darker mb-2">2024</h4>
+<p class="text-[#687599]">80+ реализованных проектов. Команда более 50 специалистов. Планы по выходу на новые рынки.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Team Approach -->
+<section class="py-[100px] bg-white">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 reveal">
+<div class="bg-bg-light rounded-3xl p-8">
+<h3 class="text-2xl font-bold mb-6">Как мы работаем</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center flex-shrink-0 font-bold">1</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Погружение в задачу</h4>
+<p class="text-sm text-[#687599]">Изучаем бизнес-процессы, проводим аудит, формулируем требования</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center flex-shrink-0 font-bold">2</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Проектирование</h4>
+<p class="text-sm text-[#687599]">Разрабатываем архитектуру, прототипы, согласовываем с заказчиком</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center flex-shrink-0 font-bold">3</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Разработка</h4>
+<p class="text-sm text-[#687599]">Agile-спринты, регулярные демо, прозрачный контроль качества</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center flex-shrink-0 font-bold">4</div>
+<div>
+<h4 class="font-bold text-bg-darker mb-1">Внедрение и поддержка</h4>
+<p class="text-sm text-[#687599]">Обучение пользователей, техническая поддержка, развитие продукта</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 reveal">
+<h2 class="text-[36px] lg:text-[48px] font-bold text-bg-darker mb-6">Команда, которая создаёт будущее</h2>
+<p class="text-lg text-[#4D5C7A] mb-6 leading-relaxed">
+В Роксофт работают специалисты с опытом в госзаказе, финтехе и телекоме. 
+Мы объединяем экспертизу в разработке, аналитике и проектировании, 
+чтобы создавать решения, которые действительно работают.
+</p>
+<p class="text-lg text-[#4D5C7A] leading-relaxed">
+Каждый проект ведёт выделенная команда: аналитик, архитектор, разработчики, 
+тестировщики и менеджер. Вы всегда знаете, кто отвечает за результат.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Geography Section -->
+<section class="py-[100px] bg-bg-light">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6">
+<div class="text-center mb-12 reveal">
+<h2 class="text-[36px] lg:text-[48px] font-bold text-bg-darker mb-4">География работы</h2>
+<p class="text-lg text-[#4D5C7A] max-w-2xl mx-auto">Проекты Роксофт реализованы в 24 регионах России</p>
+</div>
+<div class="bg-white rounded-[16px] p-8 relative h-[400px] mb-10 shadow-[0px_4px_12px_rgba(0,0,0,0.06)] overflow-hidden reveal">
+<img src="../pics/map.png" alt="География работы" class="w-full h-full object-contain">
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center reveal">
+<div class="text-sm font-medium text-[#4D5C7A]">Ленинградская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Санкт-Петербург</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Калининградская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Республика Карелия</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Челябинская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Республика Татарстан</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Нижегородская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Самарская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Рязанская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Пензенская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Тульская обл.</div>
+<div class="text-sm font-medium text-[#4D5C7A]">Курская обл.</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section id="contacts" class="py-[50px] bg-[#C10000]">
+<div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 text-center">
+<h2 class="text-[48px] font-bold text-white mb-6">Давайте создадим вместе</h2>
+<p class="text-xl text-white/90 mb-10">Расскажите о проекте — мы предложим решение</p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<a href="tel:+79006333020" class="bg-white text-[#000022] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+<i data-lucide="phone" class="w-5 h-5"></i>
++7 (900) 633-30-20
+</a>
+<a href="mailto:info@rocksoft.ru" class="bg-[#000022] text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-[#263355] transition-all flex items-center justify-center gap-2">
+<i data-lucide="mail" class="w-5 h-5"></i>
+info@rocksoft.ru
+</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16 bg-bg-darker text-bg-light">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+<!-- Logo & Copyright -->
+<div class="lg:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<img src="../pics/logo.png" alt="Роксофт" class="h-8 w-auto object-contain">
+<span class="text-xl font-bold text-white">Роксофт</span>
+</div>
+<p class="text-text-muted text-sm">© 2024 Роксофт.<br>Все права защищены.</p>
+</div>
+<!-- Products -->
+<div>
+<h4 class="text-white font-semibold mb-4">ПРОДУКТЫ</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li><a href="../projects/postamat.html" class="hover:text-accent transition-colors">Постамат</a></li>
+<li><a href="../projects/multimat.html" class="hover:text-accent transition-colors">Мультимат</a></li>
+<li><a href="../projects/wcms.html" class="hover:text-accent transition-colors">WCMS-конструктор</a></li>
+<li><a href="../projects/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+<li><a href="../projects/air.html" class="hover:text-accent transition-colors">АИР.ЦИФРА</a></li>
+</ul>
+</div>
+<!-- Cases -->
+<div>
+<h4 class="text-white font-semibold mb-4">КЕЙСЫ</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li><a href="/cases/postamatmfc.html" class="hover:text-accent transition-colors">Постоматы в МФЦ</a></li>
+<li><a href="/cases/turportal.html" class="hover:text-accent transition-colors">Туристический портал</a></li>
+</ul>
+</div>
+<!-- About -->
+<div>
+<h4 class="text-white font-semibold mb-4">О НАС</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li><a href="about.html" class="hover:text-accent transition-colors">О компании</a></li>
+<li><a href="team.html" class="hover:text-accent transition-colors">Команда</a></li>
+<li><a href="opinions.html" class="hover:text-accent transition-colors">Отзывы</a></li>
+<li><a href="rights.html" class="hover:text-accent transition-colors">Права</a></li>
+<li><a href="contacts.html" class="hover:text-accent transition-colors">Контакты</a></li>
+</ul>
+</div>
+<!-- Contacts -->
+<div>
+<h4 class="text-white font-semibold mb-4">КОНТАКТЫ</h4>
+<ul class="space-y-2 text-sm text-text-muted">
+<li>Санкт-Петербург, ул. Седова, 11А </li>
+<li><a href="tel:+78006333020" class="hover:text-accent transition-colors">+7 (800) 633-30-20</a></li>
+<li><a href="mailto:info@rocksoft.ru" class="hover:text-accent transition-colors">info@rocksoft.ru</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-text-muted/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted">
+<div class="flex items-center gap-6">
+<span>© 2026 ООО «Роксофт»</span>
+</div>
+<div class="flex items-center gap-4">
+<a href="#" class="hover:text-accent transition-colors">Политика конфиденциальности</a>
+<a href="#" class="hover:text-accent transition-colors">Обработка ПД</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Initialize Lucide Icons
+lucide.createIcons();
+
+// Header scroll effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 10) {
+header.classList.add('header-scrolled');
+} else {
+header.classList.remove('header-scrolled');
+}
+});
+
+// Scroll reveal animation
+const observerOptions = {
+root: null,
+rootMargin: '0px',
+threshold: 0.1
+};
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+observer.unobserve(entry.target);
+}
+});
+}, observerOptions);
+document.querySelectorAll('.reveal').forEach(el => {
+observer.observe(el);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.createElement('div');
+mobileMenu.id = 'mobile-menu';
+mobileMenu.className = 'hidden fixed inset-0 bg-white z-50 pt-[100px] px-6 overflow-y-auto';
+mobileMenu.innerHTML = `
+<div class="flex flex-col gap-4 text-lg">
+<div class="dropdown-mobile">
+<button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+Продукты
+<i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+</button>
+<div class="hidden flex-col gap-2 py-2 pl-4">
+<a href="../projects/postamat.html" class="py-2 text-text-primary hover:text-accent">Постамат</a>
+<a href="../projects/multimat.html" class="py-2 text-text-primary hover:text-accent">Мультимат</a>
+<a href="../projects/wcms.html" class="py-2 text-text-primary hover:text-accent">WCMS-конструктор</a>
+<a href="../projects/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+<a href="../projects/air.html" class="py-2 text-text-primary hover:text-accent">АИР.ЦИФРА</a>
+<a href="../projects/feedbacksys.html" class="py-2 text-text-primary hover:text-accent">Система обратной связи</a>
+</div>
+</div>
+<div class="dropdown-mobile">
+<button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+Кейсы
+<i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+</button>
+<div class="hidden flex-col gap-2 py-2 pl-4">
+<a href="/cases/postamatmfc.html" class="py-2 text-text-primary hover:text-accent">Постоматы в МФЦ</a>
+<a href="/cases/turportal.html" class="py-2 text-text-primary hover:text-accent">Туристический портал</a>
+</div>
+</div>
+<div class="dropdown-mobile">
+<button class="flex items-center justify-between w-full py-3 text-bg-darker font-semibold border-b border-bg-card" onclick="toggleMobileDropdown(this)">
+О нас
+<i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+</button>
+<div class="hidden flex-col gap-2 py-2 pl-4">
+<a href="about.html" class="py-2 text-text-primary hover:text-accent">О компании</a>
+<a href="team.html" class="py-2 text-text-primary hover:text-accent">Команда</a>
+<a href="opinions.html" class="py-2 text-text-primary hover:text-accent">Отзывы</a>
+<a href="rights.html" class="py-2 text-text-primary hover:text-accent">Права</a>
+</div>
+</div>
+<a href="contacts.html" class="py-3 text-bg-darker font-semibold border-b border-bg-card">Контакты</a>
+<a href="tel:+78006333020" class="py-3 text-accent font-bold flex items-center gap-2">
+<i data-lucide="phone" class="w-5 h-5"></i>
++7 (800) 633-30-20
+</a>
+</div>
+`;
+document.body.appendChild(mobileMenu);
+mobileMenuBtn.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+lucide.createIcons();
+});
+function toggleMobileDropdown(btn) {
+const content = btn.nextElementSibling;
+const icon = btn.querySelector('i');
+content.classList.toggle('hidden');
+content.classList.toggle('flex');
+icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+mobileMenu.classList.add('hidden');
+}
+});
+</script>
+</body>
+</html>
