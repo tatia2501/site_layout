@@ -111,7 +111,7 @@
 </head>
 <body class="bg-white text-bg-darker">
 
-    <!-- Header (из примера, с исправленными путями) -->
+    <!-- Header -->
     <header id="header" class="fixed top-0 left-0 right-0 h-[80px] bg-white z-50 transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 h-full flex items-center justify-between">
             <!-- Logo -->
@@ -158,6 +158,7 @@
                         <a href="../about/team.html" class="dropdown-item">Команда</a>
                         <a href="../about/opinions.html" class="dropdown-item">Отзывы</a>
                         <a href="../about/rights.html" class="dropdown-item">Права</a>
+                        <a href="../about/news.html" class="dropdown-item">Новости</a>
                     </div>
                 </div>
 
@@ -197,7 +198,7 @@
                         Постамат — <br>
                         <span class="text-gradient">автоматизация</span> выдачи документов
                     </h1>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
+                    <p class="text-lg text-text-secondary mb-8 leading-relaxed max-w-xl">
                         Программно-аппаратный комплекс для выдачи справок, бланков и документов без участия сотрудника.
                     </p>
                     
@@ -206,37 +207,37 @@
                             Смотреть модели
                             <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </a>
-                        <a href="#partnership" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold hover:border-accent hover:text-accent transition-all">
+                        <a href="#partnership" class="border-2 border-bg-card text-text-primary px-8 py-4 rounded-xl font-bold hover:border-accent hover:text-accent transition-all">
                             Как купить или арендовать
                         </a>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-bg-card">
                         <div>
                             <div class="text-3xl font-bold text-bg-darker mb-1">>15</div>
-                            <div class="text-sm text-gray-500">моделей</div>
+                            <div class="text-sm text-text-muted">моделей</div>
                         </div>
                         <div>
                             <div class="text-3xl font-bold text-bg-darker mb-1">16</div>
-                            <div class="text-sm text-gray-500">регионов РФ</div>
+                            <div class="text-sm text-text-muted">регионов РФ</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="relative reveal">
-                    <div class="bg-white rounded-3xl p-8 shadow-2xl">
-                        <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden relative bg-gray-50">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                        <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden relative bg-bg-light">
                             <img src="../pics/postamat.png" alt="Постамат" class="w-full h-full object-contain p-8">
                         </div>
                     </div>
-                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100 hidden lg:block">
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-bg-card hidden lg:block">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                                 <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i>
                             </div>
                             <div>
                                 <div class="text-sm font-bold text-bg-darker">Одобрено Правительством РФ</div>
-                                <div class="text-xs text-gray-500">№ 837-р от 11.04.2022</div>
+                                <div class="text-xs text-text-muted">№ 837-р от 11.04.2022</div>
                             </div>
                         </div>
                     </div>
@@ -251,10 +252,10 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
                     <h2 class="text-3xl lg:text-5xl font-black mb-6">Что такое <span class="text-gradient">Постамат</span></h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-lg text-text-secondary mb-6 leading-relaxed">
                         Это интеллектуальная система автоматизированной выдачи документов, которая работает без участия персонала.
                     </p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    <p class="text-lg text-text-secondary mb-8 leading-relaxed">
                         Постамат интегрируется с вашими системами (АИС, СКУД), отправляет уведомления через SMS и обеспечивает безопасную выдачу документов по коду доступа.
                     </p>
                     
@@ -265,7 +266,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-bg-darker mb-1">Интеграция с АИС</div>
-                                <div class="text-sm text-gray-500">Работа с любыми системами</div>
+                                <div class="text-sm text-text-muted">Работа с любыми системами</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
@@ -274,7 +275,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-bg-darker mb-1">Уведомления</div>
-                                <div class="text-sm text-gray-500">Telegram, email, SMS</div>
+                                <div class="text-sm text-text-muted">Telegram, email, SMS</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
@@ -283,7 +284,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-bg-darker mb-1">Интеграция со СКУД</div>
-                                <div class="text-sm text-gray-500">Открытие двери в зону</div>
+                                <div class="text-sm text-text-muted">Открытие двери в зону</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
@@ -292,7 +293,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-bg-darker mb-1">Мониторинг</div>
-                                <div class="text-sm text-gray-500">В реальном времени</div>
+                                <div class="text-sm text-text-muted">В реальном времени</div>
                             </div>
                         </div>
                     </div>
@@ -307,13 +308,13 @@
                                 </div>
                                 <div>
                                     <div class="font-bold text-bg-darker mb-1">МФЦ и госорганы</div>
-                                    <div class="text-sm text-gray-500">Выдача паспортов, справок, документов</div>
+                                    <div class="text-sm text-text-muted">Выдача паспортов, справок, документов</div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Image instead of extra blocks -->
-                        <div class="mt-6 bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+                        <div class="mt-6 bg-white rounded-2xl overflow-hidden shadow-sm border border-bg-card">
                              <img src="../pics/postamat-in-mfc.png" alt="Пример использования" class="w-full h-auto object-cover opacity-90">
                         </div>
                     </div>
@@ -327,7 +328,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl lg:text-5xl font-black mb-4">Решаем реальные <span class="text-gradient">проблемы</span></h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Наши клиенты сталкиваются с типичными проблемами. Мы знаем, как их решить.</p>
+                <p class="text-lg text-text-secondary max-w-2xl mx-auto">Наши клиенты сталкиваются с типичными проблемами. Мы знаем, как их решить.</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8">
@@ -340,17 +341,17 @@
                     <ul class="space-y-6">
                         <li class="flex gap-4">
                             <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                            <p class="text-gray-700">Большие очереди и длительное ожидание в зонах ожидания</p>
+                            <p class="text-text-primary">Большие очереди и длительное ожидание в зонах ожидания</p>
                         </li>
                         <li class="flex gap-4">
                             <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                            <p class="text-gray-700">Высокая нагрузка на сотрудников (рутинная выдача занимает часы)</p>
+                            <p class="text-text-primary">Высокая нагрузка на сотрудников (рутинная выдача занимает часы)</p>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Solution Block -->
-                <div class="bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 border-l-4 border-l-bg-dark reveal">
+                <div class="bg-white rounded-3xl p-8 lg:p-12 border border-bg-card border-l-4 border-l-bg-dark reveal">
                     <h3 class="text-2xl font-bold text-bg-darker mb-8 flex items-center gap-3">
                         <i data-lucide="check-circle" class="w-8 h-8 text-bg-dark"></i>
                         Наше решение
@@ -358,15 +359,15 @@
                     <ul class="space-y-6">
                         <li class="flex gap-4">
                             <div class="w-1.5 h-1.5 bg-bg-dark rounded-full mt-2.5 flex-shrink-0"></div>
-                            <p class="text-gray-700 font-medium">Мгновенная выдача за 30 секунд без очередей</p>
+                            <p class="text-text-primary font-medium">Мгновенная выдача за 30 секунд без очередей</p>
                         </li>
                         <li class="flex gap-4">
                             <div class="w-1.5 h-1.5 bg-bg-dark rounded-full mt-2.5 flex-shrink-0"></div>
-                            <p class="text-gray-700 font-medium">Персонал освобожден от рутины и занимается сложными задачами</p>
+                            <p class="text-text-primary font-medium">Персонал освобожден от рутины и занимается сложными задачами</p>
                         </li>
                         <li class="flex gap-4">
                             <div class="w-1.5 h-1.5 bg-bg-dark rounded-full mt-2.5 flex-shrink-0"></div>
-                            <p class="text-gray-700 font-medium">Интеграция со СКУД</p>
+                            <p class="text-text-primary font-medium">Интеграция со СКУД</p>
                         </li>
                     </ul>
                 </div>
@@ -380,7 +381,7 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 reveal">
                 <div>
                     <h2 class="text-3xl lg:text-5xl font-black mb-4">Модельный ряд</h2>
-                    <p class="text-gray-600 text-lg">Широкий выбор моделей: от компактных до масштабных</p>
+                    <p class="text-text-secondary text-lg">Широкий выбор моделей: от компактных до масштабных</p>
                 </div>
                 <a href="#contacts" class="inline-flex items-center gap-2 text-accent font-bold text-lg hover:gap-4 transition-all">
                     Запросить полный каталог
@@ -389,14 +390,14 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Model K-84 -->
-                <div class="product-card bg-white border border-gray-200 rounded-3xl p-6">
-                    <div class="bg-gray-100 h-64 w-full rounded-2xl mb-6 flex items-center justify-center">
-                        <span class="text-gray-500">Фото: Модель К-84</span>
+                <div class="product-card bg-white border border-bg-card rounded-3xl p-6">
+                    <div class="bg-bg-light h-64 w-full rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-text-muted">Фото: Модель К-84</span>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold mb-2">К-84</h3>
-                        <p class="text-gray-500 text-sm mb-4">Компактный • 84 ячейки</p>
-                        <div class="space-y-2 mb-6 text-sm text-gray-600">
+                        <p class="text-text-muted text-sm mb-4">Компактный • 84 ячейки</p>
+                        <div class="space-y-2 mb-6 text-sm text-text-secondary">
                             <div class="flex justify-between">
                                 <span>Ширина:</span>
                                 <span class="font-medium">1200 мм</span>
@@ -410,13 +411,13 @@
                                 <span class="font-medium">400 мм</span>
                             </div>
                         </div>
-                        <div class="flex items-end justify-between pt-4 border-t">
+                        <div class="flex items-end justify-between pt-4 border-t border-bg-card">
                             <div>
-                                <div class="text-xs text-gray-400 mb-1">Покупка</div>
+                                <div class="text-xs text-text-muted mb-1">Покупка</div>
                                 <div class="text-lg font-bold">1 650 000 ₽</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xs text-gray-400 mb-1">Аренда</div>
+                                <div class="text-xs text-text-muted mb-1">Аренда</div>
                                 <div class="text-lg font-bold text-accent">90 090 ₽/мес</div>
                             </div>
                         </div>
@@ -428,13 +429,13 @@
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full">
                         Популярная модель
                     </div>
-                    <div class="bg-gray-100 h-64 w-full rounded-2xl mb-6 mt-4 flex items-center justify-center">
-                        <span class="text-gray-500">Фото: Модель К-16</span>
+                    <div class="bg-bg-light h-64 w-full rounded-2xl mb-6 mt-4 flex items-center justify-center">
+                        <span class="text-text-muted">Фото: Модель К-16</span>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold mb-2">К-16</h3>
-                        <p class="text-gray-500 text-sm mb-4">Компактный • 16 ячеек</p>
-                        <div class="space-y-2 mb-6 text-sm text-gray-600">
+                        <p class="text-text-muted text-sm mb-4">Компактный • 16 ячеек</p>
+                        <div class="space-y-2 mb-6 text-sm text-text-secondary">
                             <div class="flex justify-between">
                                 <span>Ширина:</span>
                                 <span class="font-medium">400 мм</span>
@@ -448,13 +449,13 @@
                                 <span class="font-medium">400 мм</span>
                             </div>
                         </div>
-                        <div class="flex items-end justify-between pt-4 border-t">
+                        <div class="flex items-end justify-between pt-4 border-t border-bg-card">
                             <div>
-                                <div class="text-xs text-gray-400 mb-1">Покупка</div>
+                                <div class="text-xs text-text-muted mb-1">Покупка</div>
                                 <div class="text-lg font-bold">620 400 ₽</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xs text-gray-400 mb-1">Аренда</div>
+                                <div class="text-xs text-text-muted mb-1">Аренда</div>
                                 <div class="text-lg font-bold text-accent">33 880 ₽/мес</div>
                             </div>
                         </div>
@@ -462,14 +463,14 @@
                 </div>
 
                 <!-- Model S-30 -->
-                <div class="product-card bg-white border border-gray-200 rounded-3xl p-6">
-                    <div class="bg-gray-100 h-64 w-full rounded-2xl mb-6 flex items-center justify-center">
-                        <span class="text-gray-500">Фото: Модель С-30</span>
+                <div class="product-card bg-white border border-bg-card rounded-3xl p-6">
+                    <div class="bg-bg-light h-64 w-full rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-text-muted">Фото: Модель С-30</span>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold mb-2">С-30</h3>
-                        <p class="text-gray-500 text-sm mb-4">Стандартный • 30 ячеек</p>
-                        <div class="space-y-2 mb-6 text-sm text-gray-600">
+                        <p class="text-text-muted text-sm mb-4">Стандартный • 30 ячеек</p>
+                        <div class="space-y-2 mb-6 text-sm text-text-secondary">
                             <div class="flex justify-between">
                                 <span>Ширина:</span>
                                 <span class="font-medium">1670 мм</span>
@@ -483,20 +484,20 @@
                                 <span class="font-medium">350 мм</span>
                             </div>
                         </div>
-                        <div class="flex items-end justify-between pt-4 border-t">
+                        <div class="flex items-end justify-between pt-4 border-t border-bg-card">
                             <div>
-                                <div class="text-xs text-gray-400 mb-1">Покупка</div>
+                                <div class="text-xs text-text-muted mb-1">Покупка</div>
                                 <div class="text-lg font-bold">1 069 200 ₽</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xs text-gray-400 mb-1">Аренда</div>
+                                <div class="text-xs text-text-muted mb-1">Аренда</div>
                                 <div class="text-lg font-bold text-accent">54 450 ₽/мес</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 text-center text-gray-500 reveal">
+            <div class="mt-8 text-center text-text-muted reveal">
                 <p>И ещё 12 моделей в нашем каталоге (от 10 до 114 ячеек)</p>
             </div>
         </div>
@@ -507,48 +508,48 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl lg:text-5xl font-black mb-4">Как мы <span class="text-gradient">работаем</span></h2>
-                <p class="text-lg text-gray-600">Прозрачный процесс от выбора до запуска</p>
+                <p class="text-lg text-text-secondary">Прозрачный процесс от выбора до запуска</p>
             </div>
 
             <!-- Process Steps -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20 relative reveal">
                 <!-- Step 1 -->
-                <div class="relative md:border-r border-gray-200 md:pr-8 pb-8 md:pb-0">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">01</div>
+                <div class="relative md:border-r border-bg-card md:pr-8 pb-8 md:pb-0">
+                    <div class="text-[100px] lg:text-[120px] font-black text-bg-card absolute -top-10 -left-2 z-0 leading-none select-none">01</div>
                     <div class="relative z-10 pt-4">
                         <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">ВЫБОР</div>
                         <h4 class="text-xl font-bold text-bg-darker mb-3">Выбор</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Вы выбираете подходящую модель постамата из каталога или мы помогаем подобрать конфигурацию.</p>
+                        <p class="text-sm text-text-secondary leading-relaxed">Вы выбираете подходящую модель постамата из каталога или мы помогаем подобрать конфигурацию.</p>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="relative md:border-r border-gray-200 md:px-4 pb-8 md:pb-0">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">02</div>
+                <div class="relative md:border-r border-bg-card md:px-4 pb-8 md:pb-0">
+                    <div class="text-[100px] lg:text-[120px] font-black text-bg-card absolute -top-10 -left-2 z-0 leading-none select-none">02</div>
                     <div class="relative z-10 pt-4">
                         <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">ПРОИЗВОДСТВО</div>
                         <h4 class="text-xl font-bold text-bg-darker mb-3">Производство</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Мы производим оборудование и настраиваем программное обеспечение под ваши задачи.</p>
+                        <p class="text-sm text-text-secondary leading-relaxed">Мы производим оборудование и настраиваем программное обеспечение под ваши задачи.</p>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="relative md:border-r border-gray-200 md:px-4 pb-8 md:pb-0">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">03</div>
+                <div class="relative md:border-r border-bg-card md:px-4 pb-8 md:pb-0">
+                    <div class="text-[100px] lg:text-[120px] font-black text-bg-card absolute -top-10 -left-2 z-0 leading-none select-none">03</div>
                     <div class="relative z-10 pt-4">
                         <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">МОНТАЖ</div>
                         <h4 class="text-xl font-bold text-bg-darker mb-3">Доставка и монтаж</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Доставляем, подключаем к сети и вашим системам (АИС, СКУД). Обучаем персонал.</p>
+                        <p class="text-sm text-text-secondary leading-relaxed">Доставляем, подключаем к сети и вашим системам (АИС, СКУД). Обучаем персонал.</p>
                     </div>
                 </div>
 
                 <!-- Step 4 -->
                 <div class="relative md:pl-8">
-                    <div class="text-[100px] lg:text-[120px] font-black text-gray-300/40 absolute -top-10 -left-2 z-0 leading-none select-none">04</div>
+                    <div class="text-[100px] lg:text-[120px] font-black text-bg-card absolute -top-10 -left-2 z-0 leading-none select-none">04</div>
                     <div class="relative z-10 pt-4">
                         <div class="text-accent font-bold text-xs tracking-widest uppercase mb-2">СЕРВИС</div>
                         <h4 class="text-xl font-bold text-bg-darker mb-3">Поддержка</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Осуществляем техническую поддержку на всём жизненном цикле оборудования.</p>
+                        <p class="text-sm text-text-secondary leading-relaxed">Осуществляем техническую поддержку на всём жизненном цикле оборудования.</p>
                     </div>
                 </div>
             </div>
@@ -556,47 +557,65 @@
             <!-- Purchase vs Rent Cards -->
             <div class="grid md:grid-cols-2 gap-8 reveal">
                 <!-- Purchase -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <i data-lucide="shopping-cart" class="w-8 h-8 text-accent"></i>
-                        Покупка
-                    </h3>
-                    <ul class="space-y-4 text-gray-600">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-bg-card hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="shopping-cart" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-bg-darker">Покупка</h3>
+                    </div>
+                    <ul class="space-y-4 mb-8">
                         <li class="flex items-start gap-3">
                             <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
-                            <span>Постамат переходит в вашу собственность</span>
+                            <span class="text-text-secondary">МФЦ покупает постамат и размещает в отделении</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
-                            <span>Самостоятельное размещение и эксплуатация</span>
+                            <span class="text-text-secondary">МФЦ получает прибыль от услуг</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
-                            <span>Прибыль от услуг — полностью ваша</span>
+                            <span class="text-text-secondary">Техподдержка силами МФЦ или специалистом Роксофт (30% от выручки)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
+                            <span class="text-text-secondary">МФЦ приобретает расходные материалы</span>
                         </li>
                     </ul>
+                    <a href="#contacts" class="block w-full bg-accent text-white text-center py-4 rounded-xl font-bold hover:bg-red-700 transition-all">
+                        Подробнее
+                    </a>
                 </div>
 
                 <!-- Rent -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                        <i data-lucide="key" class="w-8 h-8 text-accent"></i>
-                        Аренда
-                    </h3>
-                    <ul class="space-y-4 text-gray-600">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-bg-card hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="key" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-bg-darker">Аренда</h3>
+                    </div>
+                    <ul class="space-y-4 mb-8">
                         <li class="flex items-start gap-3">
                             <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
-                            <span>Постамат остаётся в собственности Роксофт</span>
+                            <span class="text-text-secondary">Роксофт арендует площадь и устанавливает постамат</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
-                            <span>Роксофт устанавливает и обслуживает оборудование</span>
+                            <span class="text-text-secondary">Роксофт осуществляет техподдержку</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
-                            <span>Вы получаете арендную плату или % от выручки</span>
+                            <span class="text-text-secondary">Роксофт приобретает расходные материалы</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0 mt-0.5"></i>
+                            <span class="text-text-secondary">МФЦ получает арендную плату + 10% от выручки (если аренда до 1000 руб.)</span>
                         </li>
                     </ul>
+                    <a href="#contacts" class="block w-full bg-accent text-white text-center py-4 rounded-xl font-bold hover:bg-red-700 transition-all">
+                        Подробнее
+                    </a>
                 </div>
             </div>
         </div>
@@ -607,7 +626,11 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="mb-12 reveal">
                 <h2 class="text-3xl lg:text-5xl font-black mb-4">География <span class="text-gradient">внедрений</span></h2>
-                <p class="text-lg text-gray-600">Постаматы Роксофт успешно работают в 16 регионах РФ</p>
+                <p class="text-lg text-text-secondary mb-6">Постаматы Роксофт успешно работают в 16 регионах РФ</p>
+                <a href="../cases/case-mfc.html" class="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all">
+                    Смотреть кейсы размещения постаматов в МФЦ
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
             </div>
 
             <div class="bg-bg-light rounded-3xl p-8 lg:p-12 reveal">
@@ -633,18 +656,18 @@
         </div>
     </section>
 
-    <!-- CTA Section (из примера) -->
-    <section id="contacts" class="py-[50px] bg-[#C10000]">
+    <!-- CTA Section -->
+    <section id="contacts" class="py-[50px] bg-accent">
         <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 text-center">
             <h2 class="text-[48px] font-bold text-white mb-6">Давайте создадим вместе</h2>
             <p class="text-xl text-white/90 mb-10">Расскажите о проекте — мы предложим решение</p>
             
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="tel:+79006333020" class="bg-white text-[#000022] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                <a href="tel:+79006333020" class="bg-white text-bg-darker px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
                     <i data-lucide="phone" class="w-5 h-5"></i>
                     +7 (900) 633-30-20
                 </a>
-                <a href="mailto:info@rocksoft.ru" class="bg-[#000022] text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-[#263355] transition-all flex items-center justify-center gap-2">
+                <a href="mailto:info@rocksoft.ru" class="bg-bg-darker text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-bg-dark transition-all flex items-center justify-center gap-2">
                     <i data-lucide="mail" class="w-5 h-5"></i>
                     info@rocksoft.ru
                 </a>
@@ -652,7 +675,7 @@
         </div>
     </section>
 
-    <!-- Footer (из примера, с исправленными путями) -->
+    <!-- Footer -->
     <footer class="py-16 bg-bg-darker text-bg-light">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
@@ -693,6 +716,7 @@
                         <li><a href="../about/about.html" class="hover:text-accent transition-colors">О компании</a></li>
                         <li><a href="../about/team.html" class="hover:text-accent transition-colors">Команда</a></li>
                         <li><a href="../about/opinions.html" class="hover:text-accent transition-colors">Отзывы</a></li>
+                        <li><a href="../about/news.html" class="hover:text-accent transition-colors">Новости</a></li>
                         <li><a href="../about/rights.html" class="hover:text-accent transition-colors">Права</a></li>
                         <li><a href="../about/contacts.html" class="hover:text-accent transition-colors">Контакты</a></li>
                     </ul>
@@ -766,7 +790,7 @@
             });
         });
 
-        // Mobile menu toggle (из примера, с исправленными путями)
+        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.createElement('div');
         mobileMenu.id = 'mobile-menu';
@@ -806,6 +830,7 @@
                         <a href="../about/about.html" class="py-2 text-text-primary hover:text-accent">О компании</a>
                         <a href="../about/team.html" class="py-2 text-text-primary hover:text-accent">Команда</a>
                         <a href="../about/opinions.html" class="py-2 text-text-primary hover:text-accent">Отзывы</a>
+                        <a href="../about/news.html" class="py-2 text-text-primary hover:text-accent">Новости</a>
                         <a href="../about/rights.html" class="py-2 text-text-primary hover:text-accent">Права</a>
                         <a href="../about/contacts.html" class="py-2 text-text-primary hover:text-accent">Контакты</a>
                     </div>
