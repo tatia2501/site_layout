@@ -130,8 +130,8 @@
                         Кейсы
                     </a>
                     <div class="dropdown-menu">
-                        <a href="../cases/postamatmfc.html" class="dropdown-item">Постоматы в МФЦ</a>
-                        <a href="../cases/turportal.html" class="dropdown-item">Туристический портал</a>
+                        <a href="../cases/case-mfc.html" class="dropdown-item">Постоматы в МФЦ</a>
+                        <a href="../cases/case-turportal.html" class="dropdown-item">Туристический портал</a>
                     </div>
                 </div>
 
@@ -145,6 +145,7 @@
                         <a href="team.html" class="dropdown-item">Команда</a>
                         <a href="opinions.html" class="dropdown-item">Отзывы</a>
                         <a href="rights.html" class="dropdown-item">Права</a>
+                        <a href="news.html" class="dropdown-item">Новости</a>
                     </div>
                 </div>
 
@@ -175,19 +176,20 @@
             <div class="max-w-3xl">
                 <div class="text-accent font-bold text-sm mb-4 tracking-widest uppercase border-l-4 border-accent pl-4">КОНТАКТЫ</div>
                 <h1 class="text-4xl lg:text-5xl font-black mb-6">Свяжитесь с нами</h1>
-                <p class="text-lg text-text-secondary">Мы всегда на связи и готовы ответить на ваши вопросы</p>
+                <p class="text-lg text-text-secondary"> Готовы ответить на любые ваши вопросы</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Information -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="space-y-12">
-                <!-- Contact Details -->
-                <div class="reveal">
-                    <h2 class="text-2xl font-bold mb-6">Контактная информация</h2>
-                    <div class="grid md:grid-cols-3 gap-6">
+<!-- Contact Information -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="space-y-12">
+            <!-- Contact Details -->
+            <div class="reveal">
+                <h2 class="text-2xl font-bold mb-6">Контактная информация</h2>
+                <div class="max-w-4xl">
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div class="flex items-start gap-4 bg-bg-light rounded-2xl p-6">
                             <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="phone" class="w-6 h-6 text-accent"></i>
@@ -214,13 +216,26 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-bg-darker mb-1">Офис</h3>
-                                <p class="text-text-secondary text-sm">Санкт-Петерург, ул. Седова д. 11, бизнес-центр "Эврика", офис 533</p>
+                                <p class="text-text-secondary text-sm">Санкт-Петербург, ул. Седова д. 11, бизнес-центр "Эврика", офис 533</p>
                             </div>
                         </div>
 
-
+                        <!-- New: Working Hours -->
+                        <div class="flex items-start gap-4 bg-bg-light rounded-2xl p-6">
+                            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-bg-darker mb-1">Режим работы</h3>
+                                <p class="text-text-secondary text-sm">Пн-Пт: 9:00 - 18:00</p>
+                                <p class="text-text-muted text-xs mt-1">Сб-Вс: выходные</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Остальной код без изменений... -->
 
                 <!-- Map -->
                 <div class="reveal">
@@ -281,17 +296,17 @@
     </section>
 
     <!-- CTA Section -->
-    <section id="contacts" class="py-[50px] bg-[#C10000]">
+    <section id="contacts" class="py-[50px] bg-accent">
         <div class="max-w-[1440px] mx-auto px-[120px] lg:px-6 text-center">
-            <h2 class="text-[48px] font-bold text-white mb-6">Давайте создадим вместе</h2>
+            <h2 class="text-[48px] font-bold text-white mb-6">Создадим вместе</h2>
             <p class="text-xl text-white/90 mb-10">Расскажите о проекте — мы предложим решение</p>
             
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="tel:+79006333020" class="bg-white text-[#000022] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                <a href="tel:+79006333020" class="bg-white text-bg-darker px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
                     <i data-lucide="phone" class="w-5 h-5"></i>
                     +7 (900) 633-30-20
                 </a>
-                <a href="mailto:info@rocksoft.ru" class="bg-[#000022] text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-[#263355] transition-all flex items-center justify-center gap-2">
+                <a href="mailto:info@rocksoft.ru" class="bg-bg-darker text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-bg-dark transition-all flex items-center justify-center gap-2">
                     <i data-lucide="mail" class="w-5 h-5"></i>
                     info@rocksoft.ru
                 </a>
@@ -341,6 +356,7 @@
                         <li><a href="team.html" class="hover:text-accent transition-colors">Команда</a></li>
                         <li><a href="opinions.html" class="hover:text-accent transition-colors">Отзывы</a></li>
                         <li><a href="rights.html" class="hover:text-accent transition-colors">Права</a></li>
+                        <li><a href="news.html" class="hover:text-accent transition-colors">Новости</a></li>
                         <li><a href="contacts.html" class="hover:text-accent transition-colors">Контакты</a></li>
                     </ul>
                 </div>
@@ -456,6 +472,7 @@
                         <a href="team.html" class="py-2 text-text-primary hover:text-accent">Команда</a>
                         <a href="opinions.html" class="py-2 text-text-primary hover:text-accent">Отзывы</a>
                         <a href="rights.html" class="py-2 text-text-primary hover:text-accent">Права</a>
+                        <a href="news.html" class="py-2 text-text-primary hover:text-accent">Новости</a>
                         <a href="contacts.html" class="py-2 text-text-primary hover:text-accent">Контакты</a>
                     </div>
                 </div>
