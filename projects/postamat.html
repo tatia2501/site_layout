@@ -7,6 +7,7 @@
     <meta name="description" content="Программно-аппаратный комплекс для автоматизированной выдачи документов. >10 моделей, интеграция с АИС, СКУД. Покупка или аренда.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer@3.1.1/dist/model-viewer-module.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -106,6 +107,61 @@
         }
         .dropdown:hover .dropdown-toggle::after {
             transform: rotate(180deg);
+        }
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+            background-color: #F0F2F5;
+        }
+        .model-container {
+            position: relative;
+            width: 100%;
+            height: 256px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: #F0F2F5;
+        }
+        .model-controls {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .model-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #D8DCE6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .model-btn:hover {
+            background: #C10000;
+            border-color: #C10000;
+            color: white;
+        }
+        .model-hint {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #687599;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
     </style>
 </head>
@@ -393,10 +449,34 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Model K-84 -->
+                <!-- Model K-84 with 3D Model -->
                 <div class="product-card bg-white border border-bg-card rounded-3xl p-6">
-                    <div class="bg-bg-light h-64 w-full rounded-2xl mb-6 flex items-center justify-center">
-                        <span class="text-text-muted">Фото: Модель К-84</span>
+                    <div class="model-container mb-6">
+                        <model-viewer 
+                            src="../pics/3D-model.glb" 
+                            alt="3D модель постамата К-84"
+                            auto-rotate
+                            auto-rotate-delay="0"
+                            rotation-per-second="30deg"
+                            camera-controls
+                            touch-action="pan-y"
+                            shadow-intensity="1"
+                            exposure="1"
+                            environment-image="neutral"
+                        >
+                        </model-viewer>
+                        <div class="model-hint">
+                            <i data-lucide="rotate-3d" class="w-4 h-4"></i>
+                            <span>Вращайте мышью</span>
+                        </div>
+                        <div class="model-controls">
+                            <button class="model-btn" onclick="rotateModel('K-84', -45)" aria-label="Повернуть влево">
+                                <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                            </button>
+                            <button class="model-btn" onclick="rotateModel('K-84', 45)" aria-label="Повернуть вправо">
+                                <i data-lucide="rotate-cw" class="w-5 h-5"></i>
+                            </button>
+                        </div>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold mb-2">К-84</h3>
@@ -428,7 +508,6 @@
                     </div>
                 </div>
 
-                <!-- Model K-16 (Popular) -->
                 <!-- Model K-16 (Popular) -->
                 <div class="product-card bg-white border-2 border-accent rounded-3xl p-6 relative">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full">
@@ -794,6 +873,18 @@
                 }
             });
         });
+
+        // 3D Model rotation controls
+        function rotateModel(modelId, degrees) {
+            const modelViewer = document.querySelector('model-viewer');
+            if (modelViewer) {
+                const currentRotation = modelViewer.cameraOrbit;
+                const orbitParts = currentRotation.split(' ');
+                const currentY = parseFloat(orbitParts[0]);
+                const newY = currentY + degrees;
+                modelViewer.cameraOrbit = `${newY}deg ${orbitParts[1]} ${orbitParts[2]}`;
+            }
+        }
 
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
